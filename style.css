@@ -1,10 +1,12 @@
 /* временный стиль для странички */
+@import url(./fonts/inter.css);
+
 * {
   box-sizing: border-box;
 }
 * body {
   background-color: rgb(138, 138, 138);
-  font-family: 'inter';
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
@@ -26,8 +28,6 @@
   display: block;
   width: 30%;
   max-width: 282px;
-  /* margin-right: 18px;
-  margin-bottom: 21px; */
 }
 
 
@@ -123,34 +123,39 @@
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
-  margin: 34px 0 48px 0;
+  margin: 34px auto 0;
+  /* margin: 34px 0 48px 0; */
 }
 
 .modal__person-name {
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin: 48px auto 0;
+  width: 100%;
+  border: none;
+  outline:none;  
 }
 
 .modal__person-status {
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
+  margin: 30px auto 0;
+  width: 100%;
+  border: none;
+  outline:none;
 }
 
 .line {
   border-bottom: solid 1px #000;
   width: 100%;
   opacity: .2;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 .modal__btn-save {
   width: 358px;
   height: 50px;
 
-  margin-top: 48px;
-  margin-bottom: 36px;
-  
+  margin-top: 48px;  
   cursor: pointer;
   color: #fff;
   background-color: #000;
@@ -159,15 +164,25 @@
   font-weight: 400;
   border: none;
   border-radius: 2px;
+  padding: 0;
 }
 
 .modal__btn-close {
+  background-image: url(./images/Close-Icon.svg);
+
+  /* width: 40px;
+  height: 40px; */
+  padding: 0;
   cursor: pointer;
   border: none;
   background: none;
   position: absolute;
-  font-size: 40px;
-  top: -40px;
-  right: -30px;
+  top: -46px;
+  right: -46px;
   color: #fff;
+  outline:none;
+}
+
+.modal__active {
+  visibility: hidden;
 }

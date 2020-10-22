@@ -64,19 +64,15 @@
       </div>
     </article>
   </section>
-
-  <section class="modal">
-    <button class="modal__btn-close">&times;</button>
+  <section class="modal modal__active">
+    <button class="modal__btn-close"><img src="./images/Close-Icon.svg" alt="X"></button>
     <p class="modal__title">Редактировать профиль</p>
-    <p class="modal__person-name">Жак-Ив Кусто
-      <span class="line"></span>
-    </p>
-    <p class="modal__person-status">Исследователь океана
-      <span class="line"></span>
-    </p>
+      <input class="modal__person-name" type="text" placeholder="Жак-Ив Кусто">
+      <div class="line"></div>
+      <input class="modal__person-status" type="text" placeholder="Исследователь океана">
+      <div class="line"></div>    
     <button class="modal__btn-save">Сохранить</button>
   </section>
-
   <footer class="footer">
     <p class="footer__copyrigth">&copy; 2020 Mesto Russia</p>
   </footer>
