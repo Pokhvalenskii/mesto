@@ -3,7 +3,7 @@
   box-sizing: border-box;
 }
 * body {
-  background-color: rgb(85, 85, 85);
+  background-color: rgb(138, 138, 138);
   font-family: 'inter';
   font-style: normal;
   font-weight: 900;
@@ -17,34 +17,25 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 20px auto;
+  margin: 20px auto 0;
   max-width: 1000px;
+  gap: 21px 18px;
 }
 
 .card {
   display: block;
   width: 30%;
   max-width: 282px;
-  margin-right: 18px;
-  margin-bottom: 21px;
+  /* margin-right: 18px;
+  margin-bottom: 21px; */
 }
 
-.card:nth-of-type(3n) {
-  margin-right: 0;
-}
 
 @media screen and (max-width: 768px) {
   .card {
     width: 45%;
     max-width: 100%;
   }
-  .card:nth-of-type(3n) {
-    margin-right: 18px;
-  }
-  .card:nth-of-type(2n) {
-    margin-right: 0;
-  }
-
 }
 
 @media screen and (max-width: 450px) {
@@ -52,14 +43,6 @@
     width: calc(100% - 32px);
     max-width: 100%;
   }
-  .card:nth-of-type(3n) {
-    margin-right: 0;
-  }
-
-  .card:nth-of-type(1n) {
-    margin-right: 0;
-  }
-
 }
 
 
@@ -99,6 +82,92 @@
   white-space: nowrap;
 }
 
+/* footer */
 
-/* место для карт */
+.footer {
+  max-width: 882px;
+  margin: 0 auto;
+}
 
+.footer__copyrigth {
+  display: flex;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+  margin: 66px 0 60px 0;
+
+}
+
+/* modal style */
+
+.modal {
+  width: 430px;
+  height: 330px;
+
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: normal;
+  /* border: dashed gold 1px; */
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background-color: #fff;
+  padding: 0 36px 0;
+}
+
+.modal__title {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 34px 0 48px 0;
+}
+
+.modal__person-name {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.modal__person-status {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.line {
+  border-bottom: solid 1px #000;
+  width: 100%;
+  opacity: .2;
+  margin-top: 10px;
+}
+.modal__btn-save {
+  width: 358px;
+  height: 50px;
+
+  margin-top: 48px;
+  margin-bottom: 36px;
+  
+  cursor: pointer;
+  color: #fff;
+  background-color: #000;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  border: none;
+  border-radius: 2px;
+}
+
+.modal__btn-close {
+  cursor: pointer;
+  border: none;
+  background: none;
+  position: absolute;
+  font-size: 40px;
+  top: -40px;
+  right: -30px;
+  color: #fff;
+}
