@@ -1,19 +1,23 @@
 .card {
   display: block;
-  width: 30%;
+  /* width: 33.33%; */
   max-width: 282px;
+
+  width:calc(33.3% - 22px);
+  /* max-width: 100%; */
 }
 
 @media screen and (max-width: 768px) {
   .card {
-    width: 45%;
+    width:calc(50% - 22px);
     max-width: 100%;
   }
 }
 
 @media screen and (max-width: 450px) {
   .card {
-    width: calc(100% - 32px);
+    /* width: calc(100% - 32px); */
+    width:calc(100% - 22px);
     max-width: 100%;
   }
 }

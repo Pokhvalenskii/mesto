@@ -1,4 +1,12 @@
 .profile {
   display: flex;
   align-items: center;
+  margin: 0 auto;
+  width: calc(100% - 40px);
+}
+
+@media screen and (max-width: 881px) {
+  .profile {
+    width:calc(100% - 40px);
+  }
 }

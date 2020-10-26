@@ -3,6 +3,6 @@
   flex-wrap: wrap;
   justify-content: center;
   margin: 20px auto 0;
-  max-width: 1000px;
+  /* max-width: 1000px; */
   gap: 21px 18px;
 }
