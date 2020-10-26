@@ -1,0 +1,8 @@
+.footer__copyrigth {
+  display: flex;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+  margin: 66px 0 60px 0;
+}

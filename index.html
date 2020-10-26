@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css">
+  <!-- <link rel="stylesheet" href="./style.css"> -->
   <link rel="stylesheet" href="./vendor/normalize.css">
+  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
 <header class="header">
@@ -12,7 +13,7 @@
   <div class="line"></div>
 </header>
 
-<body>
+<body class="root">
   <section class="profile">
     <div class="profile__avatar">
       <img class="prifile__avatar-image" src="./images/avatar.jpg" alt="Аватар">
@@ -20,7 +21,7 @@
     <div class="profile__info">
       <div class="profile__wrapper">
         <p class="profile__person-name">Жак-Ив Кусто</p>
-        <button class="profile__edit-btn"><img src="./images/Edit-icon.svg" alt="..."></button>
+        <button class="profile__btn-edit"><img src="./images/Edit-icon.svg" alt="..."></button>
       </div>              
       <p class="profile__person-status">Исследователь океана</p>
       
@@ -86,7 +87,8 @@
       </div>
     </article>
   </section>
-  <section class="modal modal__active">
+  
+  <section class="modal modal_active">
     <button class="modal__btn-close"><img src="./images/Close-Icon.svg" alt="X"></button>
     <p class="modal__title">Редактировать профиль</p>
       <input class="modal__person-name" type="text" placeholder="Жак-Ив Кусто">

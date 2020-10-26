@@ -72,7 +72,6 @@
   max-height: 80px;
   margin-top: -1px;
   padding: 0 20px 0 20px;
-
 }
 
 .card__text {
@@ -96,7 +95,6 @@
   line-height: 22px;
   color: #545454;
   margin: 66px 0 60px 0;
-
 }
 
 /* modal style */
@@ -154,7 +152,6 @@
 .modal__btn-save {
   width: 358px;
   height: 50px;
-
   margin-top: 48px;  
   cursor: pointer;
   color: #fff;
@@ -183,7 +180,7 @@
   outline:none;
 }
 
-.modal__active {
+.modal_active {
   visibility: hidden;
 }
 
@@ -214,7 +211,7 @@
   outline: none;
 }
 
-.profile__edit-btn {
+.profile__btn-edit {
   display: flex;
   justify-content: center;
   align-items: center;
