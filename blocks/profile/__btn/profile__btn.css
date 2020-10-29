@@ -2,3 +2,15 @@
   display: flex;
   margin-left: auto
 }
+
+@media screen and (max-width: 769px) {
+  .profile__btn {
+    margin: 36px auto 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .profile__btn {
+    width: 100%;
+  }
+}

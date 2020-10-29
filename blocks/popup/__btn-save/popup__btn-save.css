@@ -1,7 +1,7 @@
-.modal__btn-save {
+.popup__btn-save {
   width: 358px;
   height: 50px;
-  margin-top: 48px;  
+  margin-top: 48px;
   cursor: pointer;
   color: #fff;
   background-color: #000;
@@ -11,4 +11,10 @@
   border: none;
   border-radius: 2px;
   padding: 0;
+
+}
+
+.popup__btn-save:hover {
+  opacity: .8;
+  transition: ease .2s;
 }

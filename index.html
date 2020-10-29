@@ -9,8 +9,10 @@
   <title>Mesto</title>
 </head>
 <header class="header">
-  <div class="header__logo"> <img src="./images/logo.svg" alt="Mesto Логотип"></div>
-  <div class="line "></div>
+  <div class="header__wrapper">
+    <div class="header__logo"> <img class="header__logo-image" src="./images/logo.svg" alt="Mesto Логотип"></div>
+  </div>
+  <div class="line line_header"></div>
 </header>
 
 <body class="root">
@@ -21,9 +23,9 @@
     <div class="profile__info">
       <div class="profile__wrapper">
         <p class="profile__person-name">Жак-Ив Кусто</p>
-        <button class="profile__btn-edit"><img src="./images/Edit-icon.svg" alt="..."></button>
-      </div>              
-      <p class="profile__person-status">Исследователь океана</p>      
+        <button type="button" class="profile__btn-edit"><img src="./images/Edit-icon.svg" alt="..."></button>
+      </div>
+      <p class="profile__person-status">Исследователь океана</p>
     </div>
     <div class="profile__btn">
       <button class="profile__btn-add"><img src="./images/Plus-icon.svg" alt="+"></button>
@@ -86,18 +88,25 @@
       </div>
     </article>
   </section>
-  
-  <section class="modal modal_active">
-    <button class="modal__btn-close"><img src="./images/Close-Icon.svg" alt="X"></button>
-    <p class="modal__title">Редактировать профиль</p>
-      <input class="modal__person-name" type="text" placeholder="Жак-Ив Кусто">
-      <div class="line"></div>
-      <input class="modal__person-status" type="text" placeholder="Исследователь океана">
-      <div class="line"></div>    
-    <button class="modal__btn-save">Сохранить</button>
+
+  <section class="popup">
+    <div class="popup__content">
+      <button type="button" class="popup__btn-close"><img src="./images/Close-Icon.svg" alt="X"></button>
+      <p class="popup__title">Редактировать профиль</p>
+      <form class="popup__form">
+        <input class="popup__person-name" type="text" >
+        <div class="line"></div>
+        <input class="popup__person-status" type="text">
+        <div class="line"></div>
+        <button class="popup__btn-save" type="submit">Сохранить</button>
+      </form>
+    </div>
   </section>
+
   <footer class="footer">
     <p class="footer__copyrigth">&copy; 2020 Mesto Russia</p>
   </footer>
+
+  <script src="./scripts/index.js"></script>
 </body>
 </html>

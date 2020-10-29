@@ -1,10 +1,10 @@
 @import url(../vendor/normalize.css);
 @import url(../fonts/inter.css);
 
-/* Карточки */ 
+/* Карточки */
 @import url(../blocks/cards/cards.css);
 
-/* Карточка */ 
+/* Карточка */
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__image-wrapper/card__image-wrapper.css);
 @import url(../blocks/card/__image/card__image.css);
@@ -13,13 +13,16 @@
 @import url(../blocks/card/__heart/card__heart.css);
 
 /* Модальное окно */
-@import url(../blocks/modal/modal.css);
-@import url(../blocks/modal/_active/modal_active.css);
-@import url(../blocks/modal/__btn-close/modal__btn-close.css);
-@import url(../blocks/modal/__btn-save/modal__btn-save.css);
-@import url(../blocks/modal/__title/modal__title.css);
-@import url(../blocks/modal/__person-name/modal__person-name.css);
-@import url(../blocks/modal/__person-status/modal__person-status.css);
+@import url(../blocks/popup/popup.css);
+
+@import url(../blocks/popup/__content/popup__content.css);
+
+@import url(../blocks/popup/_active/popup_active.css);
+@import url(../blocks/popup/__btn-close/popup__btn-close.css);
+@import url(../blocks/popup/__btn-save/popup__btn-save.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__person-name/popup__person-name.css);
+@import url(../blocks/popup/__person-status/popup__person-status.css);
 
 
 /* Футер */
@@ -41,8 +44,11 @@
 /* Хедер */
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
+@import url(../blocks/header/__logo-image/header__logo-image.css);
+@import url(../blocks/header/__wrapper/header__wrapper.css);
 /* Линия */
 @import url(../blocks/line/line.css);
+@import url(../blocks/line/_header/line_header.css);
 
 /* Бади */
 @import url(../blocks/root/root.css);
