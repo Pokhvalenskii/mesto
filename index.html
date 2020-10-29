@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="./style.css"> -->
+  <link rel="stylesheet" href="./vendor/normalize.css">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+</head>
+<header class="header">
+  <div class="header__wrapper">
+    <div class="header__logo"> <img class="header__logo-image" src="./images/logo.svg" alt="Mesto Логотип"></div>
+  </div>
+  <div class="line line_header"></div>
+</header>
+
+<body class="root">
+  <section class="profile">
+    <div class="profile__avatar">
+      <img class="prifile__avatar-image" src="./images/avatar.jpg" alt="Аватар">
+    </div>
+    <div class="profile__info">
+      <div class="profile__wrapper">
+        <p class="profile__person-name">Жак-Ив Кусто</p>
+        <button type="button" class="profile__btn-edit"><img src="./images/Edit-icon.svg" alt="..."></button>
+      </div>
+      <p class="profile__person-status">Исследователь океана</p>
+    </div>
+    <div class="profile__btn">
+      <button class="profile__btn-add"><img src="./images/Plus-icon.svg" alt="+"></button>
+    </div>
+  </section>
+
+  <section class="cards">
+    <article class="card">
+      <div class="card__image-wrapper">
+        <img class="card__image" src="./images/c53230d0dc2229c15d1d262b7906eacc.jpg" alt="#">
+      </div>
+      <div class="card__text-wrapper">
+        <p class="card__text">Карачаевск</p>
+        <img class="card__heart" src="./images/heart.svg" alt="">
+      </div>
+    </article>
+    <article class="card">
+      <div class="card__image-wrapper">
+        <img class="card__image" src="./images/094c482d6c821d8f7c5cb73551a93676.jpg" alt="#">
+      </div>
+      <div class="card__text-wrapper">
+        <p class="card__text">Гора Эльбрус</p>
+        <img class="card__heart" src="./images/heart.svg" alt="">
+      </div>
+    </article>
+    <article class="card">
+      <div class="card__image-wrapper">
+        <img class="card__image" src="./images/e245698651e452bd730ce676e237cc7a.jpg" alt="#">
+      </div>
+      <div class="card__text-wrapper">
+        <p class="card__text">Домбай</p>
+        <img class="card__heart" src="./images/heart.svg" alt="">
+      </div>
+    </article>
+    <article class="card">
+      <div class="card__image-wrapper">
+        <img class="card__image" src="./images/094c482d6c821d8f7c5cb73551a93676.jpg" alt="#">
+      </div>
+      <div class="card__text-wrapper">
+        <p class="card__text">Гора Эльбрус</p>
+        <img class="card__heart" src="./images/heart.svg" alt="">
+      </div>
+    </article>
+    <article class="card">
+      <div class="card__image-wrapper">
+        <img class="card__image" src="./images/e245698651e452bd730ce676e237cc7a.jpg" alt="#">
+      </div>
+      <div class="card__text-wrapper">
+        <p class="card__text">Домбай</p>
+        <img class="card__heart" src="./images/heart.svg" alt="">
+      </div>
+    </article>
+    <article class="card">
+      <div class="card__image-wrapper">
+        <img class="card__image" src="./images/c53230d0dc2229c15d1d262b7906eacc.jpg" alt="#">
+      </div>
+      <div class="card__text-wrapper">
+        <p class="card__text">Карачаево-Черкесия</p>
+        <img class="card__heart" src="./images/heart.svg" alt="">
+      </div>
+    </article>
+  </section>
+
+  <section class="popup">
+    <div class="popup__content">
+      <button type="button" class="popup__btn-close"><img src="./images/Close-Icon.svg" alt="X"></button>
+      <p class="popup__title">Редактировать профиль</p>
+      <form class="popup__form">
+        <input class="popup__person-name" type="text" >
+        <div class="line"></div>
+        <input class="popup__person-status" type="text">
+        <div class="line"></div>
+        <button class="popup__btn-save" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p class="footer__copyrigth">&copy; 2020 Mesto Russia</p>
+  </footer>
+
+  <script src="./scripts/index.js"></script>
+</body>
+</html>
