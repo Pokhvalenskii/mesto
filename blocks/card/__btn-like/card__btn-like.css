@@ -1,0 +1,16 @@
+.card__btn-like {
+  cursor: pointer;
+  background-image: url(../../../images/heart.svg);
+  width: 21px;
+  height: 18px;
+  border: none;
+  background-color: #fff;
+  outline: #fff;
+  padding-right: 15px;
+}
+
+.card__btn-like:hover {
+  transition: ease .3s;
+  background-image: url(../../../images/heartRed.svg);
+}
+

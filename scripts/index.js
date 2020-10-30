@@ -6,8 +6,8 @@ const form = document.querySelector('.popup__form')
 
 const name = document.querySelector('.profile__person-name');
 const status = document.querySelector('.profile__person-status');
-const nameValue = document.querySelector('.popup__person-name');
-const statusValue = document.querySelector('.popup__person-status');
+const nameValue = document.querySelector('.popup__input-line_type_name');
+const statusValue = document.querySelector('.popup__input-line_type_status');
 
 console.log (name.textContent);
 

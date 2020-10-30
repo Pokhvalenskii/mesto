@@ -6,105 +6,101 @@
   <link rel="stylesheet" href="pages/index.css">
   <title>Mesto</title>
 </head>
-<header class="header">
-  <div class="header__wrapper">
-    <div class="header__logo"> <img class="header__logo-image" src="./images/logo.svg" alt="Mesto Логотип"></div>
-  </div>
-  <div class="line line_header"></div>
-</header>
-
 <body class="root">
-  <section class="profile">
-    <div class="profile__avatar">
-      <img class="prifile__avatar-image" src="./images/avatar.jpg" alt="Аватар">
-    </div>
-    <div class="profile__info">
-      <div class="profile__wrapper">
-        <p class="profile__person-name">Жак-Ив Кусто</p>
-        <button type="button" class="profile__btn-edit"><img src="./images/Edit-icon.svg" alt="..."></button>
+  <header class="header">
+    <img class="header__logo-image" src="./images/logo.svg" alt="Mesto Логотип">
+    <!-- <div class="line line_header"></div> -->
+  </header>
+  <main>
+    <section class="profile">
+      <div class="profile__avatar">
+        <img class="profile__avatar-image" src="./images/avatar.jpg" alt="Аватар">
       </div>
-      <p class="profile__person-status">Исследователь океана</p>
-    </div>
-    <div class="profile__btn">
-      <button class="profile__btn-add"><img src="./images/Plus-icon.svg" alt="+"></button>
-    </div>
-  </section>
+      <div class="profile__info">
+        <div class="profile__wrapper">
+          <h1 class="profile__person-name">Жак-Ив Кусто</h1>
+          <button type="button" class="profile__btn-edit"><img src="./images/Edit-icon.svg" alt="Кнопка редактировать"></button>
+        </div>
+        <p class="profile__person-status">Исследователь океана</p>
+      </div>
+      <button class="profile__btn-add"><img src="./images/Plus-icon.svg" alt="Кнопка добавить" type="button"></button>
+    </section>
 
-  <section class="cards">
-    <article class="card">
-      <div class="card__image-wrapper">
-        <img class="card__image" src="./images/c53230d0dc2229c15d1d262b7906eacc.jpg" alt="#">
-      </div>
-      <div class="card__text-wrapper">
-        <p class="card__text">Карачаевск</p>
-        <img class="card__heart" src="./images/heart.svg" alt="">
-      </div>
-    </article>
-    <article class="card">
-      <div class="card__image-wrapper">
-        <img class="card__image" src="./images/094c482d6c821d8f7c5cb73551a93676.jpg" alt="#">
-      </div>
-      <div class="card__text-wrapper">
-        <p class="card__text">Гора Эльбрус</p>
-        <img class="card__heart" src="./images/heart.svg" alt="">
-      </div>
-    </article>
-    <article class="card">
-      <div class="card__image-wrapper">
-        <img class="card__image" src="./images/e245698651e452bd730ce676e237cc7a.jpg" alt="#">
-      </div>
-      <div class="card__text-wrapper">
-        <p class="card__text">Домбай</p>
-        <img class="card__heart" src="./images/heart.svg" alt="">
-      </div>
-    </article>
-    <article class="card">
-      <div class="card__image-wrapper">
-        <img class="card__image" src="./images/094c482d6c821d8f7c5cb73551a93676.jpg" alt="#">
-      </div>
-      <div class="card__text-wrapper">
-        <p class="card__text">Гора Эльбрус</p>
-        <img class="card__heart" src="./images/heart.svg" alt="">
-      </div>
-    </article>
-    <article class="card">
-      <div class="card__image-wrapper">
-        <img class="card__image" src="./images/e245698651e452bd730ce676e237cc7a.jpg" alt="#">
-      </div>
-      <div class="card__text-wrapper">
-        <p class="card__text">Домбай</p>
-        <img class="card__heart" src="./images/heart.svg" alt="">
-      </div>
-    </article>
-    <article class="card">
-      <div class="card__image-wrapper">
-        <img class="card__image" src="./images/c53230d0dc2229c15d1d262b7906eacc.jpg" alt="#">
-      </div>
-      <div class="card__text-wrapper">
-        <p class="card__text">Карачаево-Черкесия</p>
-        <img class="card__heart" src="./images/heart.svg" alt="">
-      </div>
-    </article>
-  </section>
 
-  <section class="popup">
-    <div class="popup__content">
-      <button type="button" class="popup__btn-close"><img src="./images/Close-Icon.svg" alt="X"></button>
-      <p class="popup__title">Редактировать профиль</p>
-      <form class="popup__form">
-        <input class="popup__person-name" type="text" >
-        <div class="line"></div>
-        <input class="popup__person-status" type="text">
-        <div class="line"></div>
-        <button class="popup__btn-save" type="submit">Сохранить</button>
-      </form>
-    </div>
-  </section>
-
+    <section class="cards">
+      <article class="card">
+        <div class="card__image-wrapper">
+          <img class="card__image" src="./images/c53230d0dc2229c15d1d262b7906eacc.jpg" alt="#">
+        </div>
+        <div class="card__text-wrapper">
+          <h2 class="card__text">Карачаевск</h2>
+          <!-- <button class="card__btn-like"><img class="card__heart" src="./images/heart.svg" alt=""></button>       -->
+          <button class="card__btn-like" type="button"></button>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card__image-wrapper">
+          <img class="card__image" src="./images/094c482d6c821d8f7c5cb73551a93676.jpg" alt="#">
+        </div>
+        <div class="card__text-wrapper">
+          <h2 class="card__text">Гора Эльбрус</h2>
+          <button class="card__btn-like" type="button"></button>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card__image-wrapper">
+          <img class="card__image" src="./images/e245698651e452bd730ce676e237cc7a.jpg" alt="#">
+        </div>
+        <div class="card__text-wrapper">
+          <h2 class="card__text">Домбай</h2>
+          <button class="card__btn-like" type="button"></button>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card__image-wrapper">
+          <img class="card__image" src="./images/094c482d6c821d8f7c5cb73551a93676.jpg" alt="#">
+        </div>
+        <div class="card__text-wrapper">
+          <h2 class="card__text">Гора Эльбрус</h2>
+          <button class="card__btn-like" type="button"></button>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card__image-wrapper">
+          <img class="card__image" src="./images/e245698651e452bd730ce676e237cc7a.jpg" alt="#">
+        </div>
+        <div class="card__text-wrapper">
+          <h2 class="card__text">Домбай</h2>
+         <button class="card__btn-like" type="button"></button>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card__image-wrapper">
+          <img class="card__image" src="./images/c53230d0dc2229c15d1d262b7906eacc.jpg" alt="#">
+        </div>
+        <div class="card__text-wrapper">
+          <h2 class="card__text">Карачаево-Черкесия</h2>
+          <button class="card__btn-like" type="button"></button>
+        </div>
+      </article>
+    </section>
+    <section class="popup">
+      <div class="popup__content">
+        <button type="button" class="popup__btn-close"><img src="./images/Close-Icon.svg" alt="X"></button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form" name="popup-form">
+          <input class="popup__input-line popup__input-line_type_name" type="text" name="person-name">
+          <!-- <div class="line"></div> -->
+          <input class="popup__input-line popup__input-line_type_status" type="text" name="person-status">
+          <!-- <div class="line"></div> -->
+          <button class="popup__btn-save" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </section>
+  </main>
   <footer class="footer">
     <p class="footer__copyrigth">&copy; 2020 Mesto Russia</p>
   </footer>
-
   <script src="./scripts/index.js"></script>
 </body>
 </html>

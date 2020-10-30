@@ -10,11 +10,18 @@
   background-color: rgba(0, 0, 0, 0);
   cursor: pointer;
   outline: none;
+  margin-left: auto
 }
 
 .profile__btn-add:hover {
   opacity: .6;
   transition: ease .2s;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__btn-add {
+    margin: 36px auto 0;
+  }
 }
 
 @media screen and (max-width: 450px) {
