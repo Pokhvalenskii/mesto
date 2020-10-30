@@ -1,16 +1,9 @@
 .popup__content {
-  height: 330px;
   font-size: 14px;
   line-height: 17px;
   font-weight: normal;
-  /* border: dashed gold 1px; */
   border-radius: 10px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 10;
   background-color: #fff;
   padding: 0 36px 0;
-
 }

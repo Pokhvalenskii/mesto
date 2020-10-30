@@ -1,15 +1,12 @@
 const popup = document.querySelector('.popup');
 const btnEdit = document.querySelector('.profile__btn-edit');
 const btnClose = document.querySelector('.popup__btn-close');
-const btnSave = document.querySelector('.popup__btn-save');
 const form = document.querySelector('.popup__form')
 
 const name = document.querySelector('.profile__person-name');
 const status = document.querySelector('.profile__person-status');
 const nameValue = document.querySelector('.popup__input-line_type_name');
 const statusValue = document.querySelector('.popup__input-line_type_status');
-
-console.log (name.textContent);
 
 function showEditMenu () {
   if (popup.classList.contains('popup_active')){
@@ -22,14 +19,14 @@ function showEditMenu () {
 };
 
 function saveEdits (e) {
-  name.textContent = nameValue.value;
-  status.textContent = statusValue.value;
   e.preventDefault();
+  name.textContent = nameValue.value;
+  status.textContent = statusValue.value;  
+  showEditMenu();
 };
 
 btnEdit.addEventListener('click', showEditMenu);
 btnClose.addEventListener('click', showEditMenu);
-btnSave.addEventListener('click', saveEdits);
 form.addEventListener('submit', saveEdits);
 
 

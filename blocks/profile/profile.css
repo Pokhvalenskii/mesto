@@ -7,12 +7,6 @@
   color: #fff;
 }
 
-@media screen and (max-width: 881px) {
-  .profile {
-    width:calc(100% - 40px);
-  }
-}
-
 @media screen and (max-width: 768px) {
   .profile {
     flex-direction: column;
@@ -22,7 +16,6 @@
 
 @media screen and (max-width: 450px) {
   .profile {
-    flex-direction: column;
-    margin: 42px 19px 36px;
+     margin: 42px 19px 36px;
   }
 }
