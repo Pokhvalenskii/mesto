@@ -10,8 +10,6 @@
 @import url(../blocks/card/__image/card__image.css);
 @import url(../blocks/card/__text-wrapper/card__text-wrapper.css);
 @import url(../blocks/card/__text/card__text.css);
-@import url(../blocks/card/__heart/card__heart.css);
-
 @import url(../blocks/card/__btn-like/card__btn-like.css);
 
 /* Модальное окно */
@@ -45,10 +43,6 @@
 /* Хедер */
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo-image/header__logo-image.css);
-
-/* Линия */
-@import url(../blocks/line/line.css);
-@import url(../blocks/line/_header/line_header.css);
 
 /* Бади */
 @import url(../blocks/root/root.css);
