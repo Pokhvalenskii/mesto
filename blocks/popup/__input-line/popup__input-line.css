@@ -5,8 +5,18 @@
   width: 100%;
   border: none;
   outline:none;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
   padding: 0;
   padding-bottom: 13px;
-    
+  margin: 30px auto 0;
+}
+
+.popup__input-line:first-of-type {
+  margin: 48px auto 0;
+}
+
+@media screen and (max-width: 768px) {
+  .popup__input-line:first-of-type {
+    margin: 75px auto 0;
+  }
 }
