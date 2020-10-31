@@ -2,6 +2,7 @@
   width: 358px;
   height: 50px;
   margin-top: 48px;
+  margin-bottom: 36px;
   cursor: pointer;
   color: #fff;
   background-color: #000;
@@ -17,4 +18,15 @@
 .popup__btn-save:hover {
   opacity: .8;
   transition: ease .2s;
+}
+
+@media screen and (max-width: 768px) {
+  .popup__btn-save {
+    width: 238px;
+    margin-top: 45px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: normal;
+  }
 }
