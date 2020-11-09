@@ -21,7 +21,7 @@ function showEditMenu () {
 function saveEdits (e) {
   e.preventDefault();
   name.textContent = nameValue.value;
-  status.textContent = statusValue.value;  
+  status.textContent = statusValue.value;
   showEditMenu();
 };
 
@@ -29,4 +29,5 @@ btnEdit.addEventListener('click', showEditMenu);
 btnClose.addEventListener('click', showEditMenu);
 form.addEventListener('submit', saveEdits);
 
+const newNum = 1;
 
