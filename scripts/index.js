@@ -30,4 +30,5 @@ btnClose.addEventListener('click', showEditMenu);
 form.addEventListener('submit', saveEdits);
 
 const newNum = 1;
+const newNum1 = 2;
 
