@@ -38,52 +38,78 @@ const arrayCards = [
 ];
 
 
-function showEditMenu (Event) {
-
+function showPopup (Event) {
   const evtTarget = Event.target;
-  console.log(evtTarget);
+  // console.log(evtTarget);
 
-  switch(evtTarget) {
-    case btnAdd:
-      popup.classList.add('popup_active');
-      console.log('Добавить');
-      popup.querySelector('.popup__title').textContent = 'Новое место';
-      popup.querySelector('.popup__btn-save').textContent = 'Создать';
-      nameValue.value = '';
-      statusValue.value = '';
-      nameValue.setAttribute('placeholder', 'Название');
-      statusValue.setAttribute('placeholder', 'Ссылка на картинку');
-      break;
-    case btnEdit:
-      popup.classList.add('popup_active');
-      console.log('Редактировать');
-      popup.querySelector('.popup__title').textContent = 'Редактировать профиль';
-      popup.querySelector('.popup__btn-save').textContent = 'Сохранить';
-      statusValue.value = status.textContent;
-      nameValue.value = name.textContent;
-      nameValue.setAttribute('placeholder', 'Имя');
-      statusValue.setAttribute('placeholder', 'Должность');
-      break;
-    case btnClose:
-      console.log('закрыть')
-      popup.classList.remove('popup_active');
-      break;
-    case form:
-      console.log('форма');
+  if(evtTarget === btnAdd) {
+    popup.classList.add('popup_active');
+    console.log('Добавить');
+    popup.querySelector('.popup__title').textContent = 'Новое место';
+    popup.querySelector('.popup__btn-save').textContent = 'Создать';
+    nameValue.value = '';
+    statusValue.value = '';
+    nameValue.setAttribute('placeholder', 'Название');
+    statusValue.setAttribute('placeholder', 'Ссылка на картинку');
+  }
+
+  if(evtTarget === btnEdit) {
+    popup.classList.add('popup_active');
+    console.log('Редактировать');
+    popup.querySelector('.popup__title').textContent = 'Редактировать профиль';
+    popup.querySelector('.popup__btn-save').textContent = 'Сохранить';
+    statusValue.value = status.textContent;
+    nameValue.value = name.textContent;
+    nameValue.setAttribute('placeholder', 'Имя');
+    statusValue.setAttribute('placeholder', 'Должность');
+  }
+
+  if(evtTarget === btnClose) {
+    console.log('закрыть')
+    popup.classList.remove('popup_active');
+  }
+
+  if(evtTarget === form) {
+    console.log('форма');
+    const choice = popup.querySelector('.popup__btn-save').textContent;
+    console.log('Ответ от формы: ',choice);
+
+    if(choice === 'Создать'){
+      console.log('Добавляем карточку');
+      addCard(nameValue.value, statusValue.value);
+
+    } else if(choice === 'Сохранить'){
+      console.log('Сохраняем форму редактирования');
+      name.textContent = nameValue.value;
+      status.textContent = statusValue.value;
+    }
   }
 };
 
+function addCard (name, link) {
+
+  if((name && link) !== '') {
+    const card = cardTemplate.cloneNode(true);
+    const cardText = card.querySelector('.card__text');
+    const cardImage = card.querySelector('.card__image');
+    cardText.textContent = name;
+    cardImage.src = link;
+    cards.append(card);
+  } else {
+    alert('Незьзя добавлять пустые поля');
+  }
+  // console.log(cardText, ' | ', cardImage);
+}
+
 function saveEdits (e) {
   e.preventDefault();
-  name.textContent = nameValue.value;
-  status.textContent = statusValue.value;
-  showEditMenu();
+  showPopup(e);
 };
 
-btnEdit.addEventListener('click', showEditMenu);
-btnClose.addEventListener('click', showEditMenu);
+btnEdit.addEventListener('click', showPopup);
+btnClose.addEventListener('click', showPopup);
 form.addEventListener('submit', saveEdits);
-btnAdd.addEventListener('click', showEditMenu);
+btnAdd.addEventListener('click', showPopup);
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
@@ -100,14 +126,3 @@ const showDefault = arrayCards.map(function(item){
 });
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
-
-// function addCard () {
-//   if (popup.classList.contains('popup_active')){
-//     popup.classList.remove('popup_active');
-//   } else {
-//     popup.classList.add('popup_active');
-//     nameValue.value = name.textContent;
-//     statusValue.value = status.textContent;
-//   }
-// }
-lorem100  
