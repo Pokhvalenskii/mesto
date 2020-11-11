@@ -16,82 +16,30 @@
       <div class="profile__info">
         <div class="profile__wrapper">
           <h1 class="profile__person-name">Жак-Ив Кусто</h1>
-          <button type="button" class="profile__btn-edit"><img src="./images/Edit-icon.svg" alt="Кнопка редактировать"></button>
+          <button type="button" class="profile__btn-edit"></button>
         </div>
         <p class="profile__person-status">Исследователь океана</p>
       </div>
-      <button class="profile__btn-add" type="button"><img src="./images/Plus-icon.svg" alt="Кнопка добавить"></button>
+      <button class="profile__btn-add" type="button"></button>      
     </section>
-    <section class="cards">
-      <!--
-      <article class="card">
-        <div class="card__image-wrapper">
-          <img class="card__image" src="./images/c53230d0dc2229c15d1d262b7906eacc.jpg" alt="Карачаевск">
-        </div>
-        <div class="card__text-wrapper">
-          <h2 class="card__text">Карачаевск</h2>
-          <button class="card__btn-like" type="button" aria-label="like"></button>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card__image-wrapper">
-          <img class="card__image" src="./images/094c482d6c821d8f7c5cb73551a93676.jpg" alt="Гора Эльбрус">
-        </div>
-        <div class="card__text-wrapper">
-          <h2 class="card__text">Гора Эльбрус</h2>
-          <button class="card__btn-like" type="button" aria-label="like"></button>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card__image-wrapper">
-          <img class="card__image" src="./images/e245698651e452bd730ce676e237cc7a.jpg" alt="Домбай">
-        </div>
-        <div class="card__text-wrapper">
-          <h2 class="card__text">Домбай</h2>
-          <button class="card__btn-like" type="button" aria-label="like"></button>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card__image-wrapper">
-          <img class="card__image" src="./images/094c482d6c821d8f7c5cb73551a93676.jpg" alt="Гора Эльбрус">
-        </div>
-        <div class="card__text-wrapper">
-          <h2 class="card__text">Гора Эльбрус</h2>
-          <button class="card__btn-like" type="button" aria-label="like"></button>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card__image-wrapper">
-          <img class="card__image" src="./images/e245698651e452bd730ce676e237cc7a.jpg" alt="Домбай">
-        </div>
-        <div class="card__text-wrapper">
-          <h2 class="card__text">Домбай</h2>
-         <button class="card__btn-like" type="button" aria-label="like"></button>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card__image-wrapper">
-          <img class="card__image" src="./images/c53230d0dc2229c15d1d262b7906eacc.jpg" alt="Карачаево-Черкесия">
-        </div>
-        <div class="card__text-wrapper">
-          <h2 class="card__text">Карачаево-Черкесия</h2>
-          <button class="card__btn-like" type="button" aria-label="like"></button>
-        </div>
-      </article>
-        -->
+    <section class="cards"></section>
 
-
-    </section>
     <section class="popup">
       <button type="button" class="popup__btn-close"><img class="popup__btn-close-image" src="./images/Close-Icon.svg" alt="X"></button>
       <div class="popup__content">
         <h2 class="popup__title"></h2>
         <form class="popup__form" name="popup_form">
-          <input class="popup__input-line popup__input-line_type_name" type="text" name="person_name" pattern="">
-          <input class="popup__input-line popup__input-line_type_status" type="text" name="person_status" pattern="">
+          <input class="popup__input-line popup__input-line_type_name" type="text" name="person_name">
+          <input class="popup__input-line popup__input-line_type_status" type="text" name="person_status">
           <button class="popup__btn-save" type="submit"></button>
         </form>
       </div>
+    </section>
+    <section class="popup-img">
+      <div class="popup-img__wrapper">
+      <button class="popup-img__btn-close"><img class="popup-img__btn-close-image" src="./images/Close-Icon.svg" alt="X"></button>
+      <img class="popup-img__image" src="" alt="картинка">
+      </div>      
     </section>
   </main>
   <footer class="footer">
@@ -99,8 +47,9 @@
   </footer>
 
   <template id="tempCard">
-    <article class="card">
+    <article class="card">      
       <div class="card__image-wrapper">
+        <button class="card__btn-remove"></button>
         <img class="card__image" src="" alt="">
       </div>
       <div class="card__text-wrapper">
