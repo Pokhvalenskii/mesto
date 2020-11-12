@@ -12,7 +12,7 @@
   border: none;
   right: 15px;
   top: 18px;
-  z-index: 10;
+  z-index: 1;
 }
 
 .card__btn-remove:hover {
