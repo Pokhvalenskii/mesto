@@ -1,4 +1,4 @@
-.popup-img {  
+.popup-img {
   display: none;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 10;
@@ -9,5 +9,16 @@
   bottom: 0;
   left: 0;
   align-items: center;
-  justify-content: center;  
+  justify-content: center;
+}
+
+.popup-img.popup-img_active {
+  display: flex;
+}
+
+@media screen and (max-width: 420px) {
+  .popup-img {
+    background-color: rgba(0, 0, 0, .9);
+
+  }
 }

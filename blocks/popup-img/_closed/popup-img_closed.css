@@ -1,0 +1,12 @@
+.popup-img_closed {
+  animation: closed .5s 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes closed {
+  0%{
+    opacity: 1;
+  } 100% {
+    opacity: 0;
+  }
+}
