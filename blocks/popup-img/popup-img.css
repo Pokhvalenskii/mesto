@@ -1,6 +1,6 @@
 .popup-img {
   display: none;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.9);
   z-index: 10;
   position: fixed;
   flex-direction: column;
@@ -14,11 +14,4 @@
 
 .popup-img.popup-img_active {
   display: flex;
-}
-
-@media screen and (max-width: 420px) {
-  .popup-img {
-    background-color: rgba(0, 0, 0, .9);
-
-  }
 }

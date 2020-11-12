@@ -50,6 +50,7 @@ function showPopup (Event) {
 
   if(evtTarget === btnAdd) {
     popup.classList.add('popup_active');
+    popup.querySelector('.popup__btn-save').classList.add('popup__btn-save_theme_add');
     //console.log('Добавить');
     popup.querySelector('.popup__title').textContent = 'Новое место';
     popup.querySelector('.popup__btn-save').textContent = 'Создать';
@@ -60,7 +61,9 @@ function showPopup (Event) {
   }
 
   if(evtTarget === btnEdit) {
+    
     popup.classList.add('popup_active');
+    popup.querySelector('.popup__btn-save').classList.add('popup__btn-save_theme_edit');
     //console.log('Редактировать');
     popup.querySelector('.popup__title').textContent = 'Редактировать профиль';
     popup.querySelector('.popup__btn-save').textContent = 'Сохранить';
@@ -72,10 +75,13 @@ function showPopup (Event) {
 
   if(evtTarget === btnClose) {
     //console.log('закрыть')
-    popup.classList.add('popup_closed');
+    popup.classList.add('popup_closed');   
+
     setTimeout(function(){
       popup.classList.remove('popup_active');
       popup.classList.remove('popup_closed');
+      popup.querySelector('.popup__btn-save').classList.remove('popup__btn-save_theme_edit');
+      popup.querySelector('.popup__btn-save').classList.remove('popup__btn-save_theme_add');
     }, 500)
   }
 
