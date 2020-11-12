@@ -59,6 +59,7 @@ const showDefault = arrayCards.map(function(item){
   cards.append(card);
 });
 
+
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
 function showPopup (Event) {
@@ -121,16 +122,12 @@ function showPopup (Event) {
 }
 
 function addCard (name, link) {
-  if((name && link) !== '') {
-    const card = cardTemplate.cloneNode(true);
-    const cardText = card.querySelector('.card__text');
-    const cardImage = card.querySelector('.card__image');
-    cardText.textContent = name;
-    cardImage.src = link;
-    cards.prepend(card);
-  } else {
-    alert('Незьзя добавлять пустые поля');
-  }
+  const card = cardTemplate.cloneNode(true);
+  const cardText = card.querySelector('.card__text');
+  const cardImage = card.querySelector('.card__image');
+  cardText.textContent = name;
+  cardImage.src = link;
+  cards.prepend(card);
 }
 
 function removeCard (e){
