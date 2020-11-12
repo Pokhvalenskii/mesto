@@ -1,6 +1,6 @@
 .card__btn-like {
   cursor: pointer;
-  background-image: url(../../../images/heart.svg);
+  background-image: url(../../../images/heartBorder.svg);
   width: 21px;
   height: 18px;
   border: none;
@@ -10,7 +10,7 @@
 }
 
 .card__btn-like:hover {
-  transition: ease .3s;
-  background-image: url(../../../images/heartRed.svg);
+  transition: ease .4s;
+  background-image: url(../../../images/heartBlack.svg);
 }
 

@@ -1,4 +1,4 @@
-.popup_active {
+.popup-img_active {
   display: flex;
   opacity: 0;
   animation: show .5s 1;
