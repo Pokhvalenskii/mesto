@@ -1,5 +1,5 @@
 .popup-img {
-  display: none;
+  /* display: none;
   background-color: rgba(0, 0, 0, 0.9);
   z-index: 10;
   position: fixed;
@@ -9,7 +9,7 @@
   bottom: 0;
   left: 0;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .popup-img.popup-img_active {

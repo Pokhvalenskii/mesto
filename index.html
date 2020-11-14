@@ -23,8 +23,23 @@
       <button class="profile__btn-add" type="button"></button>
     </section>
     <section class="cards"></section>
-    <section class="popup">
-      <button type="button" class="popup__btn-close"><img class="popup__btn-close-image" src="./images/Close-Icon.svg" alt="X"></button>
+
+<!-- ПОПАП РЕДАКТИРОВАНИЯ -->
+<section class="popup popup-profile">
+  <button type="button" class="popup__btn-close"><img class="popup__btn-close-image popupbtn-close" src="./images/Close-Icon.svg" alt="X"></button>
+  <div class="popup__content">
+    <h2 class="popup__title"></h2>
+    <form class="popup__form" name="popup_form">
+      <input class="popup__input-line popup__input-line_type_name" type="text" name="person_name">
+      <input class="popup__input-line popup__input-line_type_status" type="text" name="person_status">
+      <button class="popup__btn-save" type="submit"></button>
+    </form>
+  </div>
+</section>
+
+<!-- ПОПАП ДОБАВЛЕНИЯ КАРТОЧКИ -->
+    <section class="popup popup-add-card">
+      <button type="button" class="popup__btn-close"><img class="popup__btn-close-image popupbtn-close" src="./images/Close-Icon.svg" alt="X"></button>
       <div class="popup__content">
         <h2 class="popup__title"></h2>
         <form class="popup__form" name="popup_form">
@@ -34,13 +49,17 @@
         </form>
       </div>
     </section>
-    <section class="popup-img">
+
+<!-- ПОПАП КАРТИНКИ -->
+    </section>
+    <section class="popup popup-img">
       <div class="popup-img__wrapper">
-      <button class="popup-img__btn-close"><img class="popup-img__btn-close-image" src="./images/Close-Icon.svg" alt="X"></button>
+      <button class="popup-img__btn-close"><img class="popup-img__btn-close-image popupbtn-close" src="./images/Close-Icon.svg" alt="X"></button>
       <img class="popup-img__image" src="/" alt="картинка">
       <p class="popup-img__subtitle"></p>
       </div>
     </section>
+
   </main>
   <footer class="footer">
     <p class="footer__copyrigth">&copy; 2020 Mesto Russia</p>
