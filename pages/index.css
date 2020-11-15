@@ -1,48 +1,17 @@
+/* Сброс стилей */
 @import url(../vendor/normalize.css);
+
+/* Шрифты */
 @import url(../fonts/inter.css);
 
-/* Карточки */
-@import url(../blocks/cards/cards.css);
+/* Голова */
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo-image/header__logo-image.css);
 
-/* Карточка */
-@import url(../blocks/card/card.css);
-@import url(../blocks/card/__image-wrapper/card__image-wrapper.css);
-@import url(../blocks/card/__image/card__image.css);
-@import url(../blocks/card/__text-wrapper/card__text-wrapper.css);
-@import url(../blocks/card/__text/card__text.css);
-@import url(../blocks/card/__btn-like/card__btn-like.css);
-@import url(../blocks/card/__btn-like/_active/card__btn-like_active.css);
-@import url(../blocks/card/__btn-remove/card__btn-remove.css);
+/* Тело */
+@import url(../blocks/root/root.css);
 
-/* Модальное окно */
-@import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/__content/popup__content.css);
-@import url(../blocks/popup/_active/popup_active.css);
-@import url(../blocks/popup/__btn-close/popup__btn-close.css);
-@import url(../blocks/popup/__btn-close-image/popup__btn-close-image.css);
-@import url(../blocks/popup/__btn-save/popup__btn-save.css);
-@import url(../blocks/popup/__title/popup__title.css);
-@import url(../blocks/popup/__input-line/popup__input-line.css);
-@import url(../blocks/popup/__input-line/_type/popup__input-line_type_name.css);
-@import url(../blocks/popup/__input-line/_type/popup__input-line_type_status.css);
-@import url(../blocks/popup/_closed/popup_closed.css);
-
-@import url(../blocks/popup/__btn-save/_theme/_edit/popup__btn-save_theme_edit.css);
-@import url(../blocks/popup/__btn-save/_theme/_add/popup__btn-save_theme_add.css);
-
-
-@import url(../blocks/popup-img/popup-img.css);
-@import url(../blocks/popup-img/__image/popup-img__image.css);
-@import url(../blocks/popup-img/__btn-close/popup-img__btn-close.css);
-@import url(../blocks/popup-img/__btn-close-image/popup-img__btn-close-image.css);
-@import url(../blocks/popup-img/__wrapper/popup-img__wrapper.css);
-@import url(../blocks/popup-img/_active/popup-img_active.css);
-@import url(../blocks/popup-img/_closed/popup-img_closed.css);
-@import url(../blocks/popup-img/__subtitle/popup-img__subtitle.css);
-
-
-
-/* Футер */
+/* Ноги */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
@@ -56,19 +25,48 @@
 @import url(../blocks/profile/__btn-edit/profile__btn-edit.css);
 @import url(../blocks/profile/__btn-add/profile__btn-add.css);
 
-/* Хедер */
-@import url(../blocks/header/header.css);
-@import url(../blocks/header/__logo-image/header__logo-image.css);
+/* Место под карточки */
+@import url(../blocks/cards/cards.css);
 
-/* Бади */
-@import url(../blocks/root/root.css);
+/* Карточка */
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/__image-wrapper/card__image-wrapper.css);
+@import url(../blocks/card/__image/card__image.css);
+@import url(../blocks/card/__text-wrapper/card__text-wrapper.css);
+@import url(../blocks/card/__text/card__text.css);
+@import url(../blocks/card/__btn-like/card__btn-like.css);
+@import url(../blocks/card/__btn-like/_active/card__btn-like_active.css);
+@import url(../blocks/card/__btn-remove/card__btn-remove.css);
 
-/* Новые попапы */
-  /* Попап добаления карточки */
-  @import url(../blocks/popup-add-card/popup-add-card.css);
-  @import url(../blocks/popup-add-card/__content/popup-add-card__content.css);
-  @import url(../blocks/popup-add-card/__title/popup-add-card__title.css);
+/* Попап общий */
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_active/popup_active.css);
 
+/* Попап добаления карточки */
+@import url(../blocks/popup-add-card/popup-add-card.css);
+@import url(../blocks/popup-add-card/__content/popup-add-card__content.css);
+@import url(../blocks/popup-add-card/__title/popup-add-card__title.css);
+
+/* Попап редактирования профиля */
+@import url(../blocks/popup-profile/popup-profile.css);
+@import url(../blocks/popup-profile/__content/popup-profile__content.css);
+@import url(../blocks/popup-profile/__title/popup-profile__title.css);
+
+/* Попап открытия карточки */
+@import url(../blocks/popup-img/popup-img.css);
+@import url(../blocks/popup-img/__image/popup-img__image.css);
+@import url(../blocks/popup-img/__subtitle/popup-img__subtitle.css);
+@import url(../blocks/popup-img/__wrapper/popup-img__wrapper.css);
+
+/* Кнопка закрытия попапа */
 @import url(../blocks/popupbtn-close/popupbtn-close.css);
+
+/* Кнопка формы */
 @import url(../blocks/popupbtn-save/popupbtn-save.css);
+
+/* Форма */
+@import url(../blocks/popupform/popupform.css);
+
+/* Инпут */
+@import url(../blocks/popupinput/popupinput.css)
 
