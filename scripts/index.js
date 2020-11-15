@@ -196,7 +196,8 @@ function creatingCard (item) {
   const tempCard = document.querySelector('#tempCard').content.cloneNode(true);
   const cardText = tempCard.querySelector('.card__text');
   const cardImage = tempCard.querySelector('.card__image');
-  const like = tempCard.querySelector('.card__btn-like')
+  const like = tempCard.querySelector('.card__btn-like');
+  const junk = tempCard.querySelector('.card__btn-remove');
 
   cardText.textContent = item.name;
   cardImage.src = item.link;
@@ -204,12 +205,21 @@ function creatingCard (item) {
   cardImage.addEventListener('click', (event) => {
     console.log(event.target);
     popupOpen(popupImg);
+    popupImg.querySelector('.popup-img__image').src = item.link;
+    // event.target.closest('.popup').querySelector('.popup-img').querySelector('.popup-img__image').src = item.link;
   });
 
   like.addEventListener('click', (event) => {
     console.log('жмякнул лайк', event.target)
     event.target.classList.toggle('card__btn-like_active');
   });
+
+  junk.addEventListener('click', (event) => {
+    console.log('Нажал на ведро');
+    event.target.closest('.card').remove();
+  });
+
+
 
   return tempCard;
 }
