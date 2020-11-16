@@ -46,11 +46,13 @@
 @import url(../blocks/popup-add-card/popup-add-card.css);
 @import url(../blocks/popup-add-card/__content/popup-add-card__content.css);
 @import url(../blocks/popup-add-card/__title/popup-add-card__title.css);
+@import url(../blocks/popup-add-card/__wrapper/popup-add-card__wrapper.css);
 
 /* Попап редактирования профиля */
 @import url(../blocks/popup-profile/popup-profile.css);
 @import url(../blocks/popup-profile/__content/popup-profile__content.css);
 @import url(../blocks/popup-profile/__title/popup-profile__title.css);
+@import url(../blocks/popup-profile/__wrapper/popup-profile__wrapper.css);
 
 /* Попап открытия карточки */
 @import url(../blocks/popup-img/popup-img.css);

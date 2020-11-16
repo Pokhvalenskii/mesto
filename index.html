@@ -26,6 +26,7 @@
 
 <!-- ПОПАП РЕДАКТИРОВАНИЯ -->
 <section class="popup popup-profile">
+  <div class="popup-profile__wrapper">
     <button type="button" class="popupbtn-close"></button>
     <div class="popup-profile__content">
       <h2 class="popup-profile__title">Редактировать профиль</h2>
@@ -34,29 +35,32 @@
         <input class="popupinput popupinput_place_down" type="text" name="person_status" placeholder="Статус">
         <button class="popupbtn-save" type="submit">Сохранить</button>
       </form>
+    </div>
   </div>
 </section>
 
 <!-- ПОПАП ДОБАВЛЕНИЯ КАРТОЧКИ -->
     <section class="popup popup-add-card">
-      <button type="button" class="popupbtn-close"></button>
-      <div class="popup-add-card__content">
-        <h2 class="popup-add-card__title">Новое место</h2>
-        <form class="popupform" name="popupform">
-          <input class="popupinput popupinput_place_up" type="text" name="cardName" placeholder="Название">
-          <input class="popupinput popupinput_place_down" type="text" name="cardLink" placeholder="Ссылка на картинку">
-          <button class="popupbtn-save" type="submit">Создать</button>
-        </form>
-      </div>
+      <div class="popup-add-card__wrapper">
+        <button type="button" class="popupbtn-close"></button>
+        <div class="popup-add-card__content">
+          <h2 class="popup-add-card__title">Новое место</h2>
+          <form class="popupform" name="popupform">
+            <input class="popupinput popupinput_place_up" type="text" name="cardName" placeholder="Название">
+            <input class="popupinput popupinput_place_down" type="text" name="cardLink" placeholder="Ссылка на картинку">
+            <button class="popupbtn-save" type="submit">Создать</button>
+          </form>
+        </div>
+    </div>
     </section>
 
 <!-- ПОПАП КАРТИНКИ -->
     </section>
     <section class="popup popup-img">
       <div class="popup-img__wrapper">
-      <button class="popupbtn-close"></button>
-      <img class="popup-img__image" src="/" alt="картинка">
-      <p class="popup-img__subtitle"></p>
+        <button class="popupbtn-close popup-btn_theme_opencard"></button>
+        <img class="popup-img__image" src="/" alt="картинка">
+        <p class="popup-img__subtitle"></p>
       </div>
     </section>
 
@@ -79,29 +83,3 @@
   <script src="./scripts/index.js"></script>
 </body>
 </html>
-
-
-<!-- ПОПАП РЕДАКТИРОВАНИЯ -->
-<!-- <section class="popup popup-profile">
-  <button type="button" class="popupbtn-close"></button>
-  <div class="popup__content">
-    <h2 class="popup__title">Редактировать профиль</h2>
-    <form class="popup__form" name="popup_form">
-      <input class="popup__input-line popup__input-line_type_name" type="text" name="person_name">
-      <input class="popup__input-line popup__input-line_type_status" type="text" name="person_status">
-      <button class="popup__btn-save" type="submit">Сохранить</button>
-    </form>
-  </div>
-</section> -->
-
-<!-- <section class="popup popup-add-card">
-  <button type="button" class="popupbtn-close"></button>
-  <div class="popup__content">
-    <h2 class="popup__title">Новое место</h2>
-    <form class="popup__form" name="popup_form">
-      <input class="popup__input-line popup__input-line_type_name" type="text" name="person_name">
-      <input class="popup__input-line popup__input-line_type_status" type="text" name="person_status">
-      <button class="popup__btn-save" type="submit">Создать</button>
-    </form>
-  </div>
-</section> -->

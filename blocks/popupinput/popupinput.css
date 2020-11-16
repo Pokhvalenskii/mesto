@@ -1,3 +1,28 @@
 .popupinput {
-  
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: normal;
+  width: 100%;
+  border: none;
+  outline:none;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  padding: 0;
+  padding-bottom: 13px;
+  margin-bottom: 30px;
+}
+
+.popupinput:last-of-type {
+  margin-bottom: 48px;
+}
+
+@media screen and (max-width: 768px) {
+  .popupinput {
+    font-size: 12px;
+    line-height: 15px;
+    padding-bottom: 9px;
+    margin-bottom: 20px;
+  }
+  .popupinput:last-of-type {
+    margin-bottom: 36px;
+  }
 }
