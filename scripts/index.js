@@ -1,4 +1,4 @@
-const arrayCards = [
+const cardsArray = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -28,77 +28,73 @@ const arrayCards = [
 const cardPlace = document.querySelector('.cards');
 const btnEdit = document.querySelector('.profile__btn-edit');
 const btnAdd = document.querySelector('.profile__btn-add');
-const popup = document.querySelector('.popup');
 const popups = document.querySelectorAll('.popup');
-const form = document.querySelectorAll('.popupform');
+
+const forms = document.querySelectorAll('.popup__form');
+const submitEdit = forms[0];
+const submitAdd = forms[1];
+
 const name = document.querySelector('.profile__person-name');
 const status = document.querySelector('.profile__person-status');
 const popupAdd = document.querySelector('.popup-add-card');
 const popupProfile = document.querySelector('.popup-profile');
-const popupBtnClose = document.querySelectorAll('.popupbtn-close');
+const closeButtons = document.querySelectorAll('.popup__btn-close');
+
 const popupImg = document.querySelector('.popup-img');
-const popupSave = document.querySelectorAll('.popupbtn-save')
+const popupImgPicture = popupImg.querySelector('.popup-img__image')
+const popupImgTitle = popupImg.querySelector('.popup-img__subtitle')
+
+const submitButtons = document.querySelectorAll('.popup__btn-save')
+
+const profileName = popupProfile.querySelector('.popup__input_place_up');
+const profileStatus = popupProfile.querySelector('.popup__input_place_down');
 
 btnEdit.addEventListener('click', () => {
 
-  popupOpen(popupProfile);
-  popup.closest('.popup-profile').querySelector('.popupinput_place_up').value = name.textContent;
-  popup.closest('.popup-profile').querySelector('.popupinput_place_down').value = status.textContent;
-  // console.log('попап редактирования')
+  openPopup(popupProfile);
+  profileName.value = name.textContent;
+  profileStatus.value = status.textContent;
 });
 
 btnAdd.addEventListener('click', () => {
-  popupOpen(popupAdd);
-  // console.log('попап добавления')
+  openPopup(popupAdd);
 });
 
-// console.log(form)
+submitEdit.addEventListener('submit', (event) => {
+  event.preventDefault();
+  name.textContent = profileName.value;
+  status.textContent = profileStatus.value;
+  closePopup(event.target.closest('.popup'));
+});
 
-popupSave.forEach((item) => {
+submitAdd.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const placeUp = popupAdd.querySelector('.popup__input_place_up').value;
+  const placeDown = popupAdd.querySelector('.popup__input_place_up').value;
+  const arrData = {name: placeUp, link: placeDown};
+  addCard(createCard(arrData));
+  closePopup(event.target.closest('.popup'));
+});
 
-  item.addEventListener('click', (evt) => {
-    evt.preventDefault();
-    forma(item);
-  })
-})
-
-function forma (item) {
-  const popup = item.closest('.popup');
-  const upPlace = popup.querySelector('.popupinput_place_up').value;
-  const downPlace = popup.querySelector('.popupinput_place_down').value;
-  // console.log('NODA: ', popup, ' VALUE-up: ', upPlace, ' VANUE-down: ', downPlace);
-
-  if(popup.closest('.popup-profile')){
-    name.textContent = upPlace;
-    status.textContent = downPlace;
-  }
-  if(popup.closest('.popup-add-card')){
-    // console.log('тут будем создавать карточку')
-    const arrData = {name: upPlace, link: downPlace};
-    // console.log(arrData);
-    addCard(creatingCard(arrData));
-  }
-}
-
-popupBtnClose.forEach((item)=>{
+closeButtons.forEach((item)=>{
   item.addEventListener('click', () => {
-    popups.forEach(popupClose);
+    popups.forEach(closePopup);
     // console.log('закрыли попап')
   });
 })
 
-function popupOpen (popup) {
+function openPopup (popup) {
   popup.classList.add('popup_active');
 }
 
-function popupClose (popup) {
+function closePopup (popup) {
   popup.classList.remove('popup_active');
 }
 
-const card = arrayCards.map(creatingCard)
-card.forEach(addCard);
+const cards = cardsArray.map(createCard)
+cards.forEach(addCard);
 
-function creatingCard (item) {
+function createCard (item) {
   const tempCard = document.querySelector('#tempCard').content.cloneNode(true);
   const cardText = tempCard.querySelector('.card__text');
   const cardImage = tempCard.querySelector('.card__image');
@@ -107,12 +103,13 @@ function creatingCard (item) {
 
   cardText.textContent = item.name;
   cardImage.src = item.link;
+  cardImage.alt = item.name;
 
   cardImage.addEventListener('click', (event) => {
     // console.log(event.target);
-    popupOpen(popupImg);
-    popupImg.querySelector('.popup-img__image').src = item.link;
-    popupImg.querySelector('.popup-img__subtitle').textContent = item.name;
+    openPopup(popupImg);
+    popupImgPicture.src = item.link;
+    popupImgTitle.textContent = item.name;
   });
 
   like.addEventListener('click', (event) => {

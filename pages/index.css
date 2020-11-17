@@ -61,14 +61,15 @@
 @import url(../blocks/popup-img/__wrapper/popup-img__wrapper.css);
 
 /* Кнопка закрытия попапа */
-@import url(../blocks/popupbtn-close/popupbtn-close.css);
+@import url(../blocks/popup/__btn-close/popup__btn-close.css);
 
 /* Кнопка формы */
-@import url(../blocks/popupbtn-save/popupbtn-save.css);
+@import url(../blocks/popup/__btn-save/popup__btn-save.css);
 
 /* Форма */
-@import url(../blocks/popupform/popupform.css);
+@import url(../blocks/popup/__form/popup__form.css);
 
 /* Инпут */
-@import url(../blocks/popupinput/popupinput.css)
+@import url(../blocks/popup/__input/popup__input.css);
+
 
