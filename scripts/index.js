@@ -60,6 +60,9 @@ btnAdd.addEventListener('click', () => {
   openPopup(popupAdd);
 });
 
+console.log(submitEdit);
+console.log(submitAdd);
+
 submitEdit.addEventListener('submit', (event) => {
   event.preventDefault();
   name.textContent = profileName.value;
@@ -70,11 +73,12 @@ submitEdit.addEventListener('submit', (event) => {
 submitAdd.addEventListener('submit', (event) => {
   event.preventDefault();
   const placeUp = popupAdd.querySelector('.popup__input_place_up').value;
-  const placeDown = popupAdd.querySelector('.popup__input_place_up').value;
+  const placeDown = popupAdd.querySelector('.popup__input_place_down').value;
   const arrData = {name: placeUp, link: placeDown};
   addCard(createCard(arrData));
   closePopup(event.target.closest('.popup'));
 });
+
 
 closeButtons.forEach((item)=>{
   item.addEventListener('click', () => {
