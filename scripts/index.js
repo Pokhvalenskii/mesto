@@ -60,8 +60,8 @@ btnAdd.addEventListener('click', () => {
   openPopup(popupAdd);
 });
 
-console.log(submitEdit);
-console.log(submitAdd);
+// console.log(submitEdit);
+// console.log(submitAdd);
 
 submitEdit.addEventListener('submit', (event) => {
   event.preventDefault();
