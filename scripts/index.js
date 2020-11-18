@@ -48,6 +48,8 @@ const submitButtons = document.querySelectorAll('.popup__btn-save')
 
 const profileName = popupProfile.querySelector('.popup__input_place_up');
 const profileStatus = popupProfile.querySelector('.popup__input_place_down');
+const placeTitle = popupAdd.querySelector('.popup__input_place_up');
+const placeLink = popupAdd.querySelector('.popup__input_place_down');
 
 btnEdit.addEventListener('click', () => {
 
@@ -72,8 +74,8 @@ submitEdit.addEventListener('submit', (event) => {
 
 submitAdd.addEventListener('submit', (event) => {
   event.preventDefault();
-  const placeUp = popupAdd.querySelector('.popup__input_place_up').value;
-  const placeDown = popupAdd.querySelector('.popup__input_place_down').value;
+  const placeUp = placeTitle.value;
+  const placeDown = placeLink.value;
   const arrData = {name: placeUp, link: placeDown};
   addCard(createCard(arrData));
   closePopup(event.target.closest('.popup'));
@@ -81,8 +83,8 @@ submitAdd.addEventListener('submit', (event) => {
 
 
 closeButtons.forEach((item)=>{
-  item.addEventListener('click', () => {
-    popups.forEach(closePopup);
+  item.addEventListener('click', (event) => {
+    closePopup(event.target.closest('.popup'));
     // console.log('закрыли попап')
   });
 })
