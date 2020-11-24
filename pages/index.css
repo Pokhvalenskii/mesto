@@ -71,5 +71,6 @@
 
 /* Инпут */
 @import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__input/_status/popup__input_status_invalid.css);
 
 
