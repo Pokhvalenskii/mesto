@@ -45,7 +45,7 @@ const popupImgPicture = popupImg.querySelector('.popup-img__image')
 const popupImgTitle = popupImg.querySelector('.popup-img__subtitle')
 
 const submitButtons = document.querySelectorAll('.popup__btn-save')
-
+ 
 const profileName = popupProfile.querySelector('.popup__input_place_up');
 const profileStatus = popupProfile.querySelector('.popup__input_place_down');
 const placeTitle = popupAdd.querySelector('.popup__input_place_up');
