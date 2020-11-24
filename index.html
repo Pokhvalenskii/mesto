@@ -29,7 +29,7 @@
         <div class="popup-profile__content">
           <h2 class="popup-profile__title">Редактировать профиль</h2>
 
-          <form class="popup__form" name="popupform">
+          <form class="popup__form" name="popupform" novalidate>
             <input id="edit-name" class="popup__input popup__input_place_up" type="text" minlength="2" maxlength="40" name="person_name" placeholder="Имя" required>
             <span id="edit-name-error" class="error"></span>
             <input id="edit-status" class="popup__input popup__input_place_down" type="text" minlength="2" maxlength="200" name="person_status" placeholder="Статус" required>
@@ -46,12 +46,12 @@
         <div class="popup-add-card__content">
           <h2 class="popup-add-card__title">Новое место</h2>
 
-          <form class="popup__form" name="popupform">
+          <form class="popup__form" name="popupform" novalidate>
             <input id="add-name" class="popup__input popup__input_place_up" type="text" minlength="2" maxlength="30" name="cardName" placeholder="Название" required>
             <span id="add-name-error" class="error"></span>
             <input id="add-url" class="popup__input popup__input_place_down" type="url" name="cardLink" placeholder="Ссылка на картинку" required>
             <span id="add-url-error" class="error"></span>
-            <button class="popup__btn-save" type="submit">Создать</button>
+            <button class="popup__btn-save" type="submit" disabled>Создать</button>
           </form>
 
         </div>
