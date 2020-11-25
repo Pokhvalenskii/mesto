@@ -51,12 +51,15 @@ const profileStatus = popupProfile.querySelector('.popup__input_place_down');
 const placeTitle = popupAdd.querySelector('.popup__input_place_up');
 const placeLink = popupAdd.querySelector('.popup__input_place_down');
 
-btnEdit.addEventListener('click', () => {
+let temp;
 
+btnEdit.addEventListener('click', () => {
   openPopup(popupProfile);
   profileName.value = name.textContent;
   profileStatus.value = status.textContent;
+
 });
+
 
 btnAdd.addEventListener('click', () => {
   openPopup(popupAdd);
@@ -81,20 +84,28 @@ submitAdd.addEventListener('submit', (event) => {
   closePopup(event.target.closest('.popup'));
 });
 
-
 closeButtons.forEach((item)=>{
   item.addEventListener('click', (event) => {
     closePopup(event.target.closest('.popup'));
     // console.log('закрыли попап')
-  });
+  });  
 })
 
 function openPopup (popup) {
+  console.log(popup)
+  document.addEventListener('keydown', temp = (evt) => escClose(popup))
   popup.classList.add('popup_active');
 }
 
+function escClose (evt, popup) {
+  if(evt.key === 'Escape') {
+    closePopup(popup)
+  }
+}
+
 function closePopup (popup) {
-  popup.classList.remove('popup_active');
+  document.removeEventListener('keydown', temp)
+  popup.classList.remove('popup_active');  
 }
 
 const cards = cardsArray.map(createCard)
@@ -134,4 +145,5 @@ function createCard (item) {
 function addCard (item) {
   cardPlace.prepend(item);
 }
+
 
