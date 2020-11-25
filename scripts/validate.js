@@ -3,7 +3,9 @@ const cfgValidation = {
   inputSelector: '.popup__input',
   inputInvalidSelector: 'popup__input_status_invalid',
   submitSelector: '.popup__btn-save',
-  submitInvalidSelector: '.popup__btn-save_status_invalid'
+  submitInvalidSelector: '.popup__btn-save_status_invalid',
+  submitStateInvalidSelector: 'popup__btn-save_state_invalid',
+  submitstateValidSelector: 'popup__btn-save_state_valid'
 }
 
 enableValidation(cfgValidation);
@@ -14,37 +16,29 @@ function enableValidation (cfg) {
   formList.forEach((formElement) => {
       formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      // console.log('нажал на форму')
-      // console.log(formElement)
     });
-    
+
     const inputList = formElement.querySelectorAll(cfg.inputSelector);
-    console.log('input list: ', inputList)
-    
     const submit = formElement.querySelector(cfg.submitSelector);
-    console.log(submit)
 
     inputList.forEach((inputElement) => {
-      console.log(formElement);
       inputElement.addEventListener('input', () => {
         checkValid(inputElement, formElement, cfg);
-        submitCheck(formElement, submit);
+        submitCheck(formElement, submit, cfg);
       })
     })
   });
 }
 
-function submitCheck (formElement, submit) {
+function submitCheck (formElement, submit, cfg) {
   if(formElement.checkValidity()){
-    console.log('Наша форма валидна');
     submit.disabled = false;
-    submit.classList.remove('popup__btn-save_state_invalid');
-    submit.classList.add('popup__btn-save_state_valid');
+    submit.classList.remove(cfg.submitStateInvalidSelector);
+    submit.classList.add(cfg.submitStateValidSelector);
   } else {
-    console.log('наша форма не валидна');
     submit.disabled = true;
-    submit.classList.remove('popup__btn-save_state_valid');
-    submit.classList.add('popup__btn-save_state_invalid');
+    submit.classList.remove(cfg.submitStateValidSelector);
+    submit.classList.add(cfg.submitStateInvalidSelector);
   }
 }
 
@@ -62,10 +56,8 @@ function hideError (inputElement, formElement, cfg) {
 
 function checkValid (inputElement, formElement, cfg) {
  if(inputElement.validity.valid) {
-   console.log('valid element: ', inputElement);
    hideError(inputElement, formElement, cfg)
   } else {
-   console.log('invalid element', inputElement);
    showError(inputElement, formElement, cfg);
   }
 }
