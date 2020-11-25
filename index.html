@@ -24,6 +24,7 @@
     </section>
     <section class="cards"></section>
     <section class="popup popup-profile">
+      <div class="popup__overlay"></div>
       <div class="popup-profile__wrapper">
         <button type="button" class="popup__btn-close"></button>
         <div class="popup-profile__content">
@@ -34,13 +35,14 @@
             <span id="edit-name-error" class="error"></span>
             <input id="edit-status" class="popup__input popup__input_place_down" type="text" minlength="2" maxlength="200" name="person_status" placeholder="Статус" required>
             <span id="edit-status-error" class="error"></span>
-            <button class="popup__btn-save" type="submit">Сохранить</button>
+            <button class="popup__btn-save popup__btn-save_state_valid" type="submit">Сохранить</button>
           </form>
 
         </div>
       </div>
     </section>
     <section class="popup popup-add-card">
+      <div class="popup__overlay"></div>
       <div class="popup-add-card__wrapper">
         <button type="button" class="popup__btn-close"></button>
         <div class="popup-add-card__content">
@@ -51,13 +53,14 @@
             <span id="add-name-error" class="error"></span>
             <input id="add-url" class="popup__input popup__input_place_down" type="url" name="cardLink" placeholder="Ссылка на картинку" required>
             <span id="add-url-error" class="error"></span>
-            <button class="popup__btn-save" type="submit" disabled>Создать</button>
+            <button class="popup__btn-save  popup__btn-save_state_invalid" type="submit" disabled>Создать</button>
           </form>
 
         </div>
       </div>
     </section>
     <section class="popup popup-img">
+      <div class="popup__overlay"></div>
       <div class="popup-img__wrapper">
         <button class="popup__btn-close"></button>
         <img class="popup-img__image" src="/" alt="картинка">
@@ -79,8 +82,8 @@
         <button class="card__btn-like" type="button" aria-label="like"></button>
       </div>
     </article>
-  </template>
+  </template>  
   <script src="./scripts/validate.js"></script>
-  <script src="./scripts/index.js"></script>
+  <script src="./scripts/index.js"></script>  
 </body>
 </html>

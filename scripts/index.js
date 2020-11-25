@@ -50,13 +50,14 @@ const profileName = popupProfile.querySelector('.popup__input_place_up');
 const profileStatus = popupProfile.querySelector('.popup__input_place_down');
 const placeTitle = popupAdd.querySelector('.popup__input_place_up');
 const placeLink = popupAdd.querySelector('.popup__input_place_down');
-
+profileName.value = name.textContent;
+profileStatus.value = status.textContent;
 let temp;
 
 btnEdit.addEventListener('click', () => {
   openPopup(popupProfile);
-  profileName.value = name.textContent;
-  profileStatus.value = status.textContent;
+  // profileName.value = name.textContent;
+  // profileStatus.value = status.textContent;
 
 });
 
@@ -92,12 +93,18 @@ closeButtons.forEach((item)=>{
 })
 
 function openPopup (popup) {
-  console.log(popup)
-  document.addEventListener('keydown', temp = (evt) => escClose(popup))
+  //console.log(popup.querySelector('.popup__overlay'))
+    popup.querySelector('.popup__overlay').addEventListener('click', () => {
+  //  console.log('click', popup)
+    closePopup(popup);
+  });
+  
+  document.addEventListener('keydown', temp = (evt) => escClose(evt, popup));
   popup.classList.add('popup_active');
 }
 
 function escClose (evt, popup) {
+  //console.log('esc-tap')
   if(evt.key === 'Escape') {
     closePopup(popup)
   }

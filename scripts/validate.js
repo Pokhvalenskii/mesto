@@ -1,10 +1,19 @@
-const formList = document.querySelectorAll('.popup__form');
-//const inputList = document.querySelectorAll('.popup__input')
-
 //console.log(formList)
 //console.log(inputList);
 
-function enableValidation () {
+const cfgValidation = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  inputInvalidSelector: 'popup__input_status_invalid',
+  submitSelector: '.popup__btn-save',
+  submitInvalidSelector: '.popup__btn-save_status_invalid'
+}
+
+enableValidation(cfgValidation);
+
+function enableValidation (cfg) {
+  const formList = document.querySelectorAll(cfg.formSelector);
+
   formList.forEach((formElement) => {
       formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
@@ -12,17 +21,19 @@ function enableValidation () {
       // console.log(formElement)
     });
     
-    const inputList = formElement.querySelectorAll('.popup__input');
+    const inputList = formElement.querySelectorAll(cfg.inputSelector);
     console.log('input list: ', inputList)
     
-    const submit = formElement.querySelector('.popup__btn-save');
+    const submit = formElement.querySelector(cfg.submitSelector);
     console.log(submit)
-    //submitCheck (submit, inputList);
+
     inputList.forEach((inputElement) => {
       //console.log(inputElement);
+      //submitCheck(formElement, submit);
+      console.log(formElement);
       inputElement.addEventListener('input', () => {
         //console.log('inputEvent: ', inputElement.validity.valid);
-        checkValid(inputElement, formElement);
+        checkValid(inputElement, formElement, cfg);
         //console.log('НАША ФОРМА', formElement.checkValidity());
         submitCheck(formElement, submit);
       })
@@ -34,37 +45,39 @@ function submitCheck (formElement, submit) {
   if(formElement.checkValidity()){
     console.log('Наша форма валидна');
     submit.disabled = false;
+    submit.classList.remove('popup__btn-save_state_invalid');
+    submit.classList.add('popup__btn-save_state_valid');
     //formElement.classList.add('checked-valid');
   } else {
     console.log('наша форма не валидна');
     submit.disabled = true;
+    submit.classList.remove('popup__btn-save_state_valid');
+    submit.classList.add('popup__btn-save_state_invalid');
+
     //formElement.classList.add('checked-IN-valid');
 
   }
 }
 
-function showError (inputElement, formElement) {
+function showError (inputElement, formElement, cfg) {
   const error = formElement.querySelector(`#${inputElement.id}-error`);
   error.textContent = inputElement.validationMessage;
-  inputElement.classList.add('popup__input_status_invalid');
+  inputElement.classList.add(cfg.inputInvalidSelector);
 }
 
-function hideError (inputElement, formElement) {
+function hideError (inputElement, formElement, cfg) {
   const error = formElement.querySelector(`#${inputElement.id}-error`);
   error.textContent = '';
-  inputElement.classList.remove('popup__input_status_invalid');
+  inputElement.classList.remove(cfg.inputInvalidSelector);
 }
 
-
-
-function checkValid (inputElement, formElement) {
+function checkValid (inputElement, formElement, cfg) {
  if(inputElement.validity.valid) {
    console.log('valid element: ', inputElement);
-   hideError(inputElement, formElement)
+   hideError(inputElement, formElement, cfg)
   } else {
    console.log('invalid element', inputElement);
-   showError(inputElement, formElement);
+   showError(inputElement, formElement, cfg);
   }
 }
 
-enableValidation();

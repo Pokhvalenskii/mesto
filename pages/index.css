@@ -41,6 +41,7 @@
 /* Попап общий */
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_active/popup_active.css);
+@import url(../blocks/popup/__overlay/popup__overlay.css);
 
 /* Попап добаления карточки */
 @import url(../blocks/popup-add-card/popup-add-card.css);
@@ -65,6 +66,8 @@
 
 /* Кнопка формы */
 @import url(../blocks/popup/__btn-save/popup__btn-save.css);
+@import url(../blocks/popup/__btn-save/_state/popup__btn-save_state_valid.css);
+@import url(../blocks/popup/__btn-save/_state/popup__btn-save_state_invalid.css);
 
 /* Форма */
 @import url(../blocks/popup/__form/popup__form.css);
@@ -73,4 +76,6 @@
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__input/_status/popup__input_status_invalid.css);
 
+/* Ошибки */
+@import url(../blocks/error/error.css);
 
