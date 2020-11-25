@@ -16,4 +16,7 @@
   .error:last-of-type {
     margin-bottom: 31px;
   }
+  .error {
+    max-width: 200px;
+  }
 }

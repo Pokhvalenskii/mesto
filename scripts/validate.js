@@ -1,6 +1,3 @@
-//console.log(formList)
-//console.log(inputList);
-
 const cfgValidation = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -28,13 +25,9 @@ function enableValidation (cfg) {
     console.log(submit)
 
     inputList.forEach((inputElement) => {
-      //console.log(inputElement);
-      //submitCheck(formElement, submit);
       console.log(formElement);
       inputElement.addEventListener('input', () => {
-        //console.log('inputEvent: ', inputElement.validity.valid);
         checkValid(inputElement, formElement, cfg);
-        //console.log('НАША ФОРМА', formElement.checkValidity());
         submitCheck(formElement, submit);
       })
     })
@@ -47,15 +40,11 @@ function submitCheck (formElement, submit) {
     submit.disabled = false;
     submit.classList.remove('popup__btn-save_state_invalid');
     submit.classList.add('popup__btn-save_state_valid');
-    //formElement.classList.add('checked-valid');
   } else {
     console.log('наша форма не валидна');
     submit.disabled = true;
     submit.classList.remove('popup__btn-save_state_valid');
     submit.classList.add('popup__btn-save_state_invalid');
-
-    //formElement.classList.add('checked-IN-valid');
-
   }
 }
 
