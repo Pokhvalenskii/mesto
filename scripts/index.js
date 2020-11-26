@@ -30,9 +30,8 @@ const btnEdit = document.querySelector('.profile__btn-edit');
 const btnAdd = document.querySelector('.profile__btn-add');
 const popups = document.querySelectorAll('.popup');
 
-const forms = document.querySelectorAll('.popup__form');
-const submitEdit = forms[0];
-const submitAdd = forms[1];
+const submitEdit = document.querySelector('.popup-profile').querySelector('.popup__form');
+const submitAdd = document.querySelector('.popup-add-card').querySelector('.popup__form');
 
 const name = document.querySelector('.profile__person-name');
 const status = document.querySelector('.profile__person-status');
@@ -44,15 +43,12 @@ const popupImg = document.querySelector('.popup-img');
 const popupImgPicture = popupImg.querySelector('.popup-img__image')
 const popupImgTitle = popupImg.querySelector('.popup-img__subtitle')
 
-const submitButtons = document.querySelectorAll('.popup__btn-save')
- 
 const profileName = popupProfile.querySelector('.popup__input_place_up');
 const profileStatus = popupProfile.querySelector('.popup__input_place_down');
 const placeTitle = popupAdd.querySelector('.popup__input_place_up');
 const placeLink = popupAdd.querySelector('.popup__input_place_down');
-// profileName.value = name.textContent;
-// profileStatus.value = status.textContent;
-let temp;
+
+let handleEsc;
 
 btnEdit.addEventListener('click', () => {
   openPopup(popupProfile);
@@ -67,49 +63,49 @@ btnAdd.addEventListener('click', () => {
 });
 
 submitEdit.addEventListener('submit', (event) => {
-  event.preventDefault();
   name.textContent = profileName.value;
   status.textContent = profileStatus.value;
-  closePopup(event.target.closest('.popup'));
+  closePopup(popupProfile);
 });
 
 submitAdd.addEventListener('submit', (event) => {
-  event.preventDefault();
   const placeUp = placeTitle.value;
   const placeDown = placeLink.value;
   const arrData = {name: placeUp, link: placeDown};
   addCard(createCard(arrData));
-  closePopup(event.target.closest('.popup'));
+  submitAdd.reset();
+  event.target.querySelector('.popup__btn-save').disabled = true;
+  event.target.querySelector('.popup__btn-save').classList.remove('popup__btn-save_state_valid')
+  event.target.querySelector('.popup__btn-save').classList.add('popup__btn-save_state_invalid')
+  closePopup(popupAdd);
 });
 
 closeButtons.forEach((item)=>{
   item.addEventListener('click', (event) => {
     closePopup(event.target.closest('.popup'));
-    // console.log('закрыли попап')
-  });  
+  });
 })
 
-function openPopup (popup) {
-  //console.log(popup.querySelector('.popup__overlay'))
-    popup.querySelector('.popup__overlay').addEventListener('click', () => {
-  //  console.log('click', popup)
+popups.forEach((popup) =>{
+  popup.querySelector('.popup__overlay').addEventListener('click', () => {
     closePopup(popup);
   });
-  
-  document.addEventListener('keydown', temp = (evt) => escClose(evt, popup));
+});
+
+function openPopup (popup) {
+  document.addEventListener('keydown', handleEsc = (evt) => escClose(evt, popup));
   popup.classList.add('popup_active');
 }
 
 function escClose (evt, popup) {
-  //console.log('esc-tap')
   if(evt.key === 'Escape') {
     closePopup(popup)
   }
 }
 
 function closePopup (popup) {
-  document.removeEventListener('keydown', temp)
-  popup.classList.remove('popup_active');  
+  document.removeEventListener('keydown', handleEsc)
+  popup.classList.remove('popup_active');
 }
 
 const cards = cardsArray.map(createCard)
@@ -127,19 +123,16 @@ function createCard (item) {
   cardImage.alt = item.name;
 
   cardImage.addEventListener('click', (event) => {
-    // console.log(event.target);
     openPopup(popupImg);
     popupImgPicture.src = item.link;
     popupImgTitle.textContent = item.name;
   });
 
   like.addEventListener('click', (event) => {
-    // console.log('жмякнул лайк', event.target)
     event.target.classList.toggle('card__btn-like_active');
   });
 
   junk.addEventListener('click', (event) => {
-    // console.log('Нажал на ведро');
     event.target.closest('.card').remove();
   });
 

@@ -5,7 +5,7 @@ const cfgValidation = {
   submitSelector: '.popup__btn-save',
   submitInvalidSelector: '.popup__btn-save_status_invalid',
   submitStateInvalidSelector: 'popup__btn-save_state_invalid',
-  submitstateValidSelector: 'popup__btn-save_state_valid'
+  submitStateValidSelector: 'popup__btn-save_state_valid'
 }
 
 enableValidation(cfgValidation);
@@ -35,6 +35,7 @@ function submitCheck (formElement, submit, cfg) {
     submit.disabled = false;
     submit.classList.remove(cfg.submitStateInvalidSelector);
     submit.classList.add(cfg.submitStateValidSelector);
+
   } else {
     submit.disabled = true;
     submit.classList.remove(cfg.submitStateValidSelector);
