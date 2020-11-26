@@ -29,24 +29,24 @@ const cardPlace = document.querySelector('.cards');
 const btnEdit = document.querySelector('.profile__btn-edit');
 const btnAdd = document.querySelector('.profile__btn-add');
 const popups = document.querySelectorAll('.popup');
-
-const submitEdit = document.querySelector('.popup-profile').querySelector('.popup__form');
-const submitAdd = document.querySelector('.popup-add-card').querySelector('.popup__form');
-
 const name = document.querySelector('.profile__person-name');
 const status = document.querySelector('.profile__person-status');
-const popupAdd = document.querySelector('.popup-add-card');
-const popupProfile = document.querySelector('.popup-profile');
-const closeButtons = document.querySelectorAll('.popup__btn-close');
 
+const popupAdd = document.querySelector('.popup-add-card');
+const submitAdd = popupAdd.querySelector('.popup__form');
+
+const popupProfile = document.querySelector('.popup-profile');
+const submitEdit = popupProfile.querySelector('.popup__form');
+
+const closeButtons = document.querySelectorAll('.popup__btn-close');
 const popupImg = document.querySelector('.popup-img');
 const popupImgPicture = popupImg.querySelector('.popup-img__image')
 const popupImgTitle = popupImg.querySelector('.popup-img__subtitle')
-
 const profileName = popupProfile.querySelector('.popup__input_place_up');
 const profileStatus = popupProfile.querySelector('.popup__input_place_down');
 const placeTitle = popupAdd.querySelector('.popup__input_place_up');
 const placeLink = popupAdd.querySelector('.popup__input_place_down');
+const addCardSubmitButton = popupAdd.querySelector('.popup__btn-save');
 
 let handleEsc;
 
@@ -74,9 +74,9 @@ submitAdd.addEventListener('submit', (event) => {
   const arrData = {name: placeUp, link: placeDown};
   addCard(createCard(arrData));
   submitAdd.reset();
-  event.target.querySelector('.popup__btn-save').disabled = true;
-  event.target.querySelector('.popup__btn-save').classList.remove('popup__btn-save_state_valid')
-  event.target.querySelector('.popup__btn-save').classList.add('popup__btn-save_state_invalid')
+  addCardSubmitButton.disabled = true;
+  addCardSubmitButton.classList.remove('popup__btn-save_state_valid')
+  addCardSubmitButton.classList.add('popup__btn-save_state_invalid')
   closePopup(popupAdd);
 });
 
