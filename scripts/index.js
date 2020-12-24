@@ -25,19 +25,26 @@ const cardsArray = [
   }
 ];
 
+const cfgValidation = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  inputInvalidSelector: 'popup__input_status_invalid',
+  submitSelector: '.popup__btn-save',
+  submitInvalidSelector: '.popup__btn-save_status_invalid',
+  submitStateInvalidSelector: 'popup__btn-save_state_invalid',
+  submitStateValidSelector: 'popup__btn-save_state_valid'
+};
+
 const cardPlace = document.querySelector('.cards');
 const btnEdit = document.querySelector('.profile__btn-edit');
 const btnAdd = document.querySelector('.profile__btn-add');
 const popups = document.querySelectorAll('.popup');
 const name = document.querySelector('.profile__person-name');
 const status = document.querySelector('.profile__person-status');
-
 const popupAdd = document.querySelector('.popup-add-card');
 const submitAdd = popupAdd.querySelector('.popup__form');
-
 const popupProfile = document.querySelector('.popup-profile');
 const submitEdit = popupProfile.querySelector('.popup__form');
-
 const closeButtons = document.querySelectorAll('.popup__btn-close');
 const popupImg = document.querySelector('.popup-img');
 const popupImgPicture = popupImg.querySelector('.popup-img__image')
@@ -47,8 +54,11 @@ const profileStatus = popupProfile.querySelector('.popup__input_place_down');
 const placeTitle = popupAdd.querySelector('.popup__input_place_up');
 const placeLink = popupAdd.querySelector('.popup__input_place_down');
 const addCardSubmitButton = popupAdd.querySelector('.popup__btn-save');
-
 let handleEsc;
+
+const validate = new FormValidator();
+validate.enableValidation(cfgValidation);
+
 
 btnEdit.addEventListener('click', () => {
   openPopup(popupProfile);
@@ -56,7 +66,6 @@ btnEdit.addEventListener('click', () => {
   profileStatus.value = status.textContent;
 
 });
-
 
 btnAdd.addEventListener('click', () => {
   openPopup(popupAdd);
@@ -72,7 +81,11 @@ submitAdd.addEventListener('submit', (event) => {
   const placeUp = placeTitle.value;
   const placeDown = placeLink.value;
   const arrData = {name: placeUp, link: placeDown};
-  addCard(createCard(arrData));
+
+  const card = new Card(arrData, '#tempCard');
+  const cardElement = card.createCard();
+  addCard(cardElement);
+
   submitAdd.reset();
   addCardSubmitButton.disabled = true;
   addCardSubmitButton.classList.remove('popup__btn-save_state_valid')
@@ -108,39 +121,51 @@ function closePopup (popup) {
   popup.classList.remove('popup_active');
 }
 
-const cards = cardsArray.map(createCard)
-cards.forEach(addCard);
-
-function createCard (item) {
-  const tempCard = document.querySelector('#tempCard').content.cloneNode(true);
-  const cardText = tempCard.querySelector('.card__text');
-  const cardImage = tempCard.querySelector('.card__image');
-  const like = tempCard.querySelector('.card__btn-like');
-  const junk = tempCard.querySelector('.card__btn-remove');
-
-  cardText.textContent = item.name;
-  cardImage.src = item.link;
-  cardImage.alt = item.name;
-
-  cardImage.addEventListener('click', (event) => {
-    openPopup(popupImg);
-    popupImgPicture.src = item.link;
-    popupImgTitle.textContent = item.name;
-  });
-
-  like.addEventListener('click', (event) => {
-    event.target.classList.toggle('card__btn-like_active');
-  });
-
-  junk.addEventListener('click', (event) => {
-    event.target.closest('.card').remove();
-  });
-
-  return tempCard;
-}
+cardsArray.forEach((item) => {
+  const card = new Card(item, '#tempCard');
+  const cardElement = card.createCard();
+  // console.log('card Element = ', cardElement);
+  addCard(cardElement);
+});
 
 function addCard (item) {
   cardPlace.prepend(item);
 }
+
+
+
+// const cards = cardsArray.map(createCard)
+// cards.forEach(addCard);
+
+// function createCard (item) {
+//   const tempCard = document.querySelector('#tempCard').content.cloneNode(true);
+//   const cardText = tempCard.querySelector('.card__text');
+//   const cardImage = tempCard.querySelector('.card__image');
+//   const like = tempCard.querySelector('.card__btn-like');
+//   const junk = tempCard.querySelector('.card__btn-remove');
+
+//   cardText.textContent = item.name;
+//   cardImage.src = item.link;
+//   cardImage.alt = item.name;
+
+//   cardImage.addEventListener('click', (event) => {
+//     openPopup(popupImg);
+//     popupImgPicture.src = item.link;
+//     popupImgTitle.textContent = item.name;
+//   });
+
+//   like.addEventListener('click', (event) => {
+//     event.target.classList.toggle('card__btn-like_active');
+//   });
+
+//   junk.addEventListener('click', (event) => {
+//     event.target.closest('.card').remove();
+//   });
+
+//   return tempCard;
+// }
+
+
+
 
 
