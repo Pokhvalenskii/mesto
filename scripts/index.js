@@ -1,5 +1,6 @@
 import Card from './Card.js';
-import FormValidator from './FormValidator.js'
+import FormValidator from './FormValidator.js';
+import {cardsArray} from './initial-сards.js';
 
 
 
@@ -41,6 +42,8 @@ let handleEsc;
 const validateAddCard = new FormValidator(submitAdd, cfgValidation);
 const validateEditProfile = new FormValidator(submitEdit, cfgValidation);
 
+validateAddCard.enableValid();
+validateEditProfile.enableValid();
 
 
 btnEdit.addEventListener('click', () => {
@@ -71,8 +74,6 @@ submitAdd.addEventListener('submit', (event) => {
 
   submitAdd.reset();
   addCardSubmitButton.disabled = true;
-  // addCardSubmitButton.classList.remove('popup__btn-save_state_valid')
-  // addCardSubmitButton.classList.add('popup__btn-save_state_invalid')
   addCardSubmitButton.classList.remove(cfgValidation.submitStateValidSelector);
   addCardSubmitButton.classList.add(cfgValidation.submitStateInvalidSelector);
   closePopup(popupAdd);
