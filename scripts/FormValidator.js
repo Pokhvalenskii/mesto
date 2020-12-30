@@ -1,24 +1,24 @@
-class FormValidator {
+export default class FormValidator {
 
-    enableValidation = (cfg) => {
-    // console.log(cfg)
-    const formList = document.querySelectorAll(cfg.formSelector);
-    // console.log(formList)
-    formList.forEach((formElement) => {
-        formElement.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-        console.log(formElement);
+  constructor(form, cfg) {
+    this.form = form;
+    this.cfg = cfg;
+    this._enableValidTest(this.form, this.cfg)
+  }
+
+  _enableValidTest = (form, cfg) => {
+    // console.log(form);
+    form.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
+
+    const inputList = form.querySelectorAll(cfg.inputSelector);
+    const submit = form.querySelector(cfg.submitSelector);
+    inputList.forEach((inputElement) => {
+      inputElement.addEventListener('input', () => {
+        this._checkValid(inputElement, form, cfg);
+        this._submitCheck(form, submit, cfg);
       });
-
-      const inputList = formElement.querySelectorAll(cfg.inputSelector);
-      const submit = formElement.querySelector(cfg.submitSelector);
-
-      inputList.forEach((inputElement) => {
-        inputElement.addEventListener('input', () => {
-          this._checkValid(inputElement, formElement, cfg);
-          this._submitCheck(formElement, submit, cfg);
-        })
-      })
     });
   }
 

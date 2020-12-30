@@ -1,8 +1,9 @@
-class Card {
-  constructor(item, selector) {
+export default class Card {
+  constructor(item, selector, openPopupImage) {
     this.name = item.name
     this.link = item.link;
     this.selector = selector;
+    this.openPopupImage = openPopupImage;
   }
 
   _getTemplate = () => {
@@ -16,14 +17,15 @@ class Card {
 
   createCard = () => {
     this.cardItem = this._getTemplate();
-
-    this.cardItem.querySelector('.card__text').textContent = this.name;
-    this.cardItem.querySelector('.card__image').src = this.link;
-    this.cardItem.querySelector('.card__image').alt = this.name;
-
     const like = this.cardItem.querySelector('.card__btn-like');
     const junk = this.cardItem.querySelector('.card__btn-remove');
     const image = this.cardItem.querySelector('.card__image');
+    this.cardItem.querySelector('.card__text').textContent = this.name;
+    image.src = this.link;
+    image.alt = this.name;
+
+    // this.cardItem.querySelector('.card__image').src = this.link;
+    // this.cardItem.querySelector('.card__image').alt = this.name;
 
     this._addEvent(like, junk, image);
 
@@ -41,9 +43,7 @@ class Card {
     });
 
     image.addEventListener('click', () => {
-      openPopup(popupImg);
-      popupImgPicture.src = this.link;
-      popupImgTitle.textContent = this.name;
+      this.openPopupImage(this.link, this.name);
     })
   }
 
