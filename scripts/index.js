@@ -42,8 +42,8 @@ let handleEsc;
 const validateAddCard = new FormValidator(submitAdd, cfgValidation);
 const validateEditProfile = new FormValidator(submitEdit, cfgValidation);
 
-validateAddCard.enableValid();
-validateEditProfile.enableValid();
+validateAddCard.enableValidation();
+validateEditProfile.enableValidation();
 
 
 btnEdit.addEventListener('click', () => {

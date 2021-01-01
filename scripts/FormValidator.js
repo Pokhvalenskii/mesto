@@ -5,53 +5,56 @@ export default class FormValidator {
     this.cfg = cfg;
   }
 
-  enableValid = () => {
+  enableValidation = () => {
     this.form.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
 
-    const inputList = this.form.querySelectorAll(this.cfg.inputSelector);
-    const submit = this.form.querySelector(this.cfg.submitSelector);
-    inputList.forEach((inputElement) => {
+    this.inputList = this.form.querySelectorAll(this.cfg.inputSelector);
+    this.submit = this.form.querySelector(this.cfg.submitSelector);
+    
+    this.inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
-        this._checkValid(inputElement, this.form, this.cfg);
-        this._submitCheck(this.form, submit, this.cfg);
+        this._checkValid(inputElement);
+        this._submitCheck(this.submit);
       });
     });
   }
 
-  _submitCheck = (formElement, submit, cfg) => {
-    if(formElement.checkValidity()){
+  _submitCheck = (submit) => {
+    if(this.form.checkValidity()){
       submit.disabled = false;
-      submit.classList.remove(cfg.submitStateInvalidSelector);
-      submit.classList.add(cfg.submitStateValidSelector);
+      submit.classList.remove(this.cfg.submitStateInvalidSelector);
+      submit.classList.add(this.cfg.submitStateValidSelector);
 
     } else {
       submit.disabled = true;
-      submit.classList.remove(cfg.submitStateValidSelector);
-      submit.classList.add(cfg.submitStateInvalidSelector);
+      submit.classList.remove(this.cfg.submitStateValidSelector);
+      submit.classList.add(this.cfg.submitStateInvalidSelector);
     }
   }
 
-  _showError = (inputElement, formElement, cfg) => {
-    const error = formElement.querySelector(`#${inputElement.id}-error`);
+  _checkValid =  (inputElement) => {
+    if(inputElement.validity.valid) {
+      this._hideError(inputElement)
+     } else {
+      this._showError(inputElement);
+     }
+   }
+
+  _showError = (inputElement) => {
+    const error = this.form.querySelector(`#${inputElement.id}-error`);
     error.textContent = inputElement.validationMessage;
-    inputElement.classList.add(cfg.inputInvalidSelector);
+    inputElement.classList.add(this.cfg.inputInvalidSelector);
   }
 
-  _hideError = (inputElement, formElement, cfg) => {
-    const error = formElement.querySelector(`#${inputElement.id}-error`);
+  _hideError = (inputElement) => {
+    const error = this.form.querySelector(`#${inputElement.id}-error`);
     error.textContent = '';
-    inputElement.classList.remove(cfg.inputInvalidSelector);
+    inputElement.classList.remove(this.cfg.inputInvalidSelector);
   }
 
-  _checkValid =  (inputElement, formElement, cfg) => {
-   if(inputElement.validity.valid) {
-     this._hideError(inputElement, formElement, cfg)
-    } else {
-     this._showError(inputElement, formElement, cfg);
-    }
-  }
+
 }
 
 
