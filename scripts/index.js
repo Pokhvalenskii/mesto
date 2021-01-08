@@ -1,6 +1,7 @@
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import {cardsArray} from './initial-сards.js';
+import Popup from './Popup.js';
 
 
 
@@ -26,6 +27,8 @@ const popupAdd = document.querySelector('.popup-add-card');
 const submitAdd = popupAdd.querySelector('.popup__form');
 
 const popupProfile = document.querySelector('.popup-profile');
+//console.log(popupProfile);
+
 const submitEdit = popupProfile.querySelector('.popup__form');
 
 const closeButtons = document.querySelectorAll('.popup__btn-close');
@@ -42,12 +45,16 @@ let handleEsc;
 const validateAddCard = new FormValidator(submitAdd, cfgValidation);
 const validateEditProfile = new FormValidator(submitEdit, cfgValidation);
 
+const popupClass = new Popup('.popup-profile');
+
 validateAddCard.enableValidation();
 validateEditProfile.enableValidation();
 
 
 btnEdit.addEventListener('click', () => {
-  openPopup(popupProfile);
+  // openPopup(popupProfile);
+  popupClass.open();
+  
   profileName.value = name.textContent;
   profileStatus.value = status.textContent;
 
