@@ -4,9 +4,10 @@ export default class Popup {
     let Esc;
   }
 
-  open = () => {
+  open () {
     this._popup.classList.add('popup_active');
     this.setEventListeners();
+    console.log('hello from popup')
   }
 
   close = () => {
@@ -20,7 +21,6 @@ export default class Popup {
 
     this._popup.querySelector('.popup__overlay')
     .addEventListener('click', this.close);  
-
     
     document.addEventListener('keydown',
     this.Esc = (evt) => this._handleEscClose(evt))

@@ -3,9 +3,7 @@ import FormValidator from './FormValidator.js';
 import {cardsArray} from './initial-сards.js';
 import Popup from './Popup.js';
 import Section from './Section.js';
-
-
-
+import PopupWithImage from './PopupWithImage.js';
 
 const cfgValidation = {
   formSelector: '.popup__form',
@@ -17,10 +15,10 @@ const cfgValidation = {
   submitStateValidSelector: 'popup__btn-save_state_valid'
 };
 
-const cardPlace = document.querySelector('.cards');
+// const cardPlace = document.querySelector('.cards');
 const btnEdit = document.querySelector('.profile__btn-edit');
 const btnAdd = document.querySelector('.profile__btn-add');
-const popups = document.querySelectorAll('.popup');
+// const popups = document.querySelectorAll('.popup');
 const name = document.querySelector('.profile__person-name');
 
 const status = document.querySelector('.profile__person-status');
@@ -33,11 +31,13 @@ const popupProfile = document.querySelector('.popup-profile');
 
 const submitEdit = popupProfile.querySelector('.popup__form');
 
-const closeButtons = document.querySelectorAll('.popup__btn-close');
+// const closeButtons = document.querySelectorAll('.popup__btn-close');
 
 const popupImg = document.querySelector('.popup-img');
-const popupImgPicture = popupImg.querySelector('.popup-img__image')
-const popupImgTitle = popupImg.querySelector('.popup-img__subtitle')
+
+export const popupImgPicture = popupImg.querySelector('.popup-img__image')
+export const popupImgTitle = popupImg.querySelector('.popup-img__subtitle')
+
 const profileName = popupProfile.querySelector('.popup__input_place_up');
 const profileStatus = popupProfile.querySelector('.popup__input_place_down');
 const placeTitle = popupAdd.querySelector('.popup__input_place_up');
@@ -45,12 +45,20 @@ const placeLink = popupAdd.querySelector('.popup__input_place_down');
 const addCardSubmitButton = popupAdd.querySelector('.popup__btn-save');
 let handleEsc;
 
+
+// const popupWithImage = new PopupWithImage('.popup-img');
+// console.log(popupWithImage)
+
+const popupProfileClass = new Popup('.popup-profile');
+const popupAddClass = new Popup('.popup-add-card');
+const popupPictureClass = new Popup('.popup-img');
 const validateAddCard = new FormValidator(submitAdd, cfgValidation);
 const validateEditProfile = new FormValidator(submitEdit, cfgValidation);
 const cardList = new Section({
   data: cardsArray,
   renderer: (item) => {
-    const card = new Card(item, '#tempCard', openPopupImage);
+    const popupWithImage = new PopupWithImage(item, '.popup-img');
+    const card = new Card(item, '#tempCard', popupWithImage);
     const cardElement = card.createCard();
     cardList.addItem(cardElement);
   }
@@ -59,13 +67,6 @@ const cardList = new Section({
 cardList.initialCards();
 validateAddCard.enableValidation();
 validateEditProfile.enableValidation();
-
-const popupProfileClass = new Popup('.popup-profile');
-const popupAddClass = new Popup('.popup-add-card');
-const popupPictureClass = new Popup('.popup-img');
-// popupProfileClass.setEventListeners();
-
-
 
 btnEdit.addEventListener('click', () => {
   // openPopup(popupProfile);
@@ -92,17 +93,27 @@ submitAdd.addEventListener('submit', (event) => {
   const placeDown = placeLink.value;
   const arrData = {name: placeUp, link: placeDown};
 
-  const card = new Card(arrData, '#tempCard', openPopupImage);
+  const popupWithImage = new PopupWithImage(arrData, '.popup-img');
+  const card = new Card(arrData, '#tempCard', popupWithImage);
+
   const cardElement = card.createCard();
   cardList.addItem(cardElement);
   //addCard(cardElement);
-
   submitAdd.reset();
   addCardSubmitButton.disabled = true;
   addCardSubmitButton.classList.remove(cfgValidation.submitStateValidSelector);
   addCardSubmitButton.classList.add(cfgValidation.submitStateInvalidSelector);
   popupAddClass.close();
 });
+
+
+// function openPopupImage (link, name) {
+//   // openPopup(popupImg);
+//   // popupWithImage.open();
+//   popupPictureClass.open();
+//   popupImgPicture.src = link;
+//   popupImgTitle.textContent = name;
+// }
 
 // console.log(closeButtons)
 
@@ -135,12 +146,7 @@ submitAdd.addEventListener('submit', (event) => {
 //   popup.classList.remove('popup_active');
 // }
 
-function openPopupImage (link, name) {
-  // openPopup(popupImg);
-  popupPictureClass.open();
-  popupImgPicture.src = link;
-  popupImgTitle.textContent = name;
-}
+
 
 // function addCard (item) {
 //   cardPlace.prepend(item);

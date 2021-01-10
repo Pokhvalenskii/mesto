@@ -1,9 +1,10 @@
 export default class Card {
-  constructor(item, selector, openPopupImage) {
+  constructor(item, selector, popupWithImage) {
     this._name = item.name
     this._link = item.link;
     this._selector = selector;
-    this._openPopupImage = openPopupImage;
+    // console.log(openPopupImage);
+    this._openPopupImage = popupWithImage;
   }
 
   _getTemplate = () => {
@@ -40,8 +41,14 @@ export default class Card {
     });
 
     image.addEventListener('click', () => {
-      this._openPopupImage(this._link, this._name);
+      this._openPopupImage.open();
     })
+
+    // image.addEventListener('click', () => {
+    //   this.popupWithImage(this._link, this._name, this._selector);
+    // })
+
+    
   }
 
 }
