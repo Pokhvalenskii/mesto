@@ -1,7 +1,9 @@
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import {cardsArray} from './initial-сards.js';
-import Popup from './Popup.js';
+//import Popup from './Popup.js';
+import Section from './Section.js';
+
 
 
 
@@ -32,6 +34,7 @@ const popupProfile = document.querySelector('.popup-profile');
 const submitEdit = popupProfile.querySelector('.popup__form');
 
 const closeButtons = document.querySelectorAll('.popup__btn-close');
+
 const popupImg = document.querySelector('.popup-img');
 const popupImgPicture = popupImg.querySelector('.popup-img__image')
 const popupImgTitle = popupImg.querySelector('.popup-img__subtitle')
@@ -45,16 +48,39 @@ let handleEsc;
 const validateAddCard = new FormValidator(submitAdd, cfgValidation);
 const validateEditProfile = new FormValidator(submitEdit, cfgValidation);
 
-const popupClass = new Popup('.popup-profile');
+
+
+const cardList = new Section({
+  data: cardsArray,
+  renderer: (item) => {
+    const card = new Card(item, '#tempCard', openPopupImage);
+    const cardElement = card.createCard();
+    cardList.addItem(cardElement);
+  }
+}, '.cards');
+
+cardList.initialCards();
+
+// cardsArray.forEach((item) => {
+//   //console.log(item);
+//   const card = new Card(item, '#tempCard', openPopupImage);
+//   const cardElement = card.createCard();
+//   addCard(cardElement);
+// });
+
+
+
+
+
 
 validateAddCard.enableValidation();
 validateEditProfile.enableValidation();
 
 
 btnEdit.addEventListener('click', () => {
-  // openPopup(popupProfile);
-  popupClass.open();
-  
+  openPopup(popupProfile);
+  // popupProf.open();
+
   profileName.value = name.textContent;
   profileStatus.value = status.textContent;
 
@@ -77,7 +103,8 @@ submitAdd.addEventListener('submit', (event) => {
 
   const card = new Card(arrData, '#tempCard', openPopupImage);
   const cardElement = card.createCard();
-  addCard(cardElement);
+  cardList.addItem(cardElement);
+  //addCard(cardElement);
 
   submitAdd.reset();
   addCardSubmitButton.disabled = true;
@@ -114,14 +141,9 @@ function closePopup (popup) {
   popup.classList.remove('popup_active');
 }
 
-cardsArray.forEach((item) => {
-  const card = new Card(item, '#tempCard', openPopupImage);
-  const cardElement = card.createCard();
-  addCard(cardElement);
-});
-
 function addCard (item) {
   cardPlace.prepend(item);
+  //console.dir(item);
 }
 
 function openPopupImage (link, name) {
