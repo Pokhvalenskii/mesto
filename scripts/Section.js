@@ -6,7 +6,6 @@ export default class Section {
   };
 
   initialCards = () => {
-    console.log('testFunction');
      this.renderer(this._items);
   }
 
