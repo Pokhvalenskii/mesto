@@ -5,6 +5,8 @@ import Popup from './Popup.js';
 import Section from './Section.js';
 import PopupWithImage from './PopupWithImage.js';
 
+const test;
+
 const cfgValidation = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
