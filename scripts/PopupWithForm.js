@@ -13,7 +13,9 @@ export default class PopupWithForm extends Popup{
     super.setEventListeners();
     bigData.popup.querySelector('.popup__form').addEventListener('submit', (event) => {
       console.log(event, 'CLASS');
-      this.submit(bigData.data);
+      // this.submit(bigData.data);
+      this.submit(bigData);
+      super.close();
     })
   }
   _getInputValues() {

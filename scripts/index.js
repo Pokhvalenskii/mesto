@@ -86,15 +86,16 @@ submitEdit.addEventListener('submit', (event) => {
 });
 
 const popupWithFormAdd = new PopupWithForm('.popup-add-card', (data) => {
-
-  const placeUp = data.name.value;
-  const placeDown = data.link.value;
+  const placeUp = data.data.name.value;
+  const placeDown = data.data.link.value;
   const arrData = {name: placeUp, link: placeDown};
   console.log('helloADDEVENT' , arrData);
   const popupWithImage = new PopupWithImage(arrData, '.popup-img');
   const card = new Card(arrData, '#tempCard', popupWithImage);
   const cardElement = card.createCard();
   cardList.addItem(cardElement);
+
+  data.popup.querySelector('.popup__form').reset();
 });
 
 popupWithFormAdd.setEventListeners();
