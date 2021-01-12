@@ -4,7 +4,8 @@ import {cardsArray} from './initial-сards.js';
 import Popup from './Popup.js';
 import Section from './Section.js';
 import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js'
+import PopupWithForm from './PopupWithForm.js';
+import UserInfo from './UserInfo.js';
 
 
 const cfgValidation = {
@@ -77,23 +78,22 @@ const popupWithFormAdd = new PopupWithForm('.popup-add-card', (data) => {
   submitBtn.classList.add(cfgValidation.submitStateInvalidSelector);
 });
 
+const userData = {name, status};
+// console.log(userData)
+const userInfo =  new UserInfo(userData)
+
+// console.log(userInfo.getUserInfo())
+
 const popupWithFormEdit = new PopupWithForm('.popup-profile', (data) => {
   console.log(data.popup, 'HI')
   const profileName = data.popup.querySelector('.popup__input_place_up');
-  const profilestatus = data.popup.querySelector('.popup__input_place_down');
-  name.textContent = profileName.value;
-  status.textContent = profileStatus.value;
-
+  const profileStatus = data.popup.querySelector('.popup__input_place_down');
+  userInfo.setUserInfo(profileName, profileStatus);
+  // name.textContent = profileName.value;
+  // status.textContent = profileStatus.value;
 });
 
 
-
-
-// submitEdit.addEventListener('submit', (event) => {
-//   name.textContent = profileName.value;
-//   status.textContent = profileStatus.value;
-//   // popupPictureClass.close();
-// });
 
 cardList.initialCards();
 validateAddCard.enableValidation();
@@ -106,7 +106,6 @@ btnEdit.addEventListener('click', () => {
   popupProfileClass.open();
   profileName.value = name.textContent;
   profileStatus.value = status.textContent;
-
 });
 
 btnAdd.addEventListener('click', () => {
@@ -114,9 +113,11 @@ btnAdd.addEventListener('click', () => {
 });
 
 
-
-
-
+// submitEdit.addEventListener('submit', (event) => {
+//   name.textContent = profileName.value;
+//   status.textContent = profileStatus.value;
+//   // popupPictureClass.close();
+// });
 
 // popupWithFormAdd._getInputValues();
 
