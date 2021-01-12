@@ -7,7 +7,7 @@ export default class Card {
     this._openPopupImage = popupWithImage;
   }
 
-  _getTemplate = () => {
+  _getTemplate () {
     const template = document
     .querySelector(this._selector)
     .content
@@ -16,7 +16,7 @@ export default class Card {
     return template;
   }
 
-  createCard = () => {
+  createCard () {
     this.cardItem = this._getTemplate();
     const like = this.cardItem.querySelector('.card__btn-like');
     const junk = this.cardItem.querySelector('.card__btn-remove');
@@ -31,7 +31,7 @@ export default class Card {
   }
 
 
-  _addEvent = (like, junk, image) => {
+  _addEvent (like, junk, image) {
     like.addEventListener('click', (event) => {
       event.target.classList.toggle('card__btn-like_active');
     });
@@ -48,7 +48,7 @@ export default class Card {
     //   this.popupWithImage(this._link, this._name, this._selector);
     // })
 
-    
+
   }
 
 }

@@ -5,14 +5,14 @@ export default class FormValidator {
     this.cfg = cfg;
   }
 
-  enableValidation = () => {
+  enableValidation () {
     this.form.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
 
     this.inputList = this.form.querySelectorAll(this.cfg.inputSelector);
     this.submit = this.form.querySelector(this.cfg.submitSelector);
-    
+
     this.inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkValid(inputElement);
@@ -21,7 +21,7 @@ export default class FormValidator {
     });
   }
 
-  _submitCheck = (submit) => {
+  _submitCheck (submit) {
     if(this.form.checkValidity()){
       submit.disabled = false;
       submit.classList.remove(this.cfg.submitStateInvalidSelector);
@@ -34,7 +34,7 @@ export default class FormValidator {
     }
   }
 
-  _checkValid =  (inputElement) => {
+  _checkValid (inputElement) {
     if(inputElement.validity.valid) {
       this._hideError(inputElement)
      } else {
@@ -42,13 +42,13 @@ export default class FormValidator {
      }
    }
 
-  _showError = (inputElement) => {
+  _showError (inputElement) {
     const error = this.form.querySelector(`#${inputElement.id}-error`);
     error.textContent = inputElement.validationMessage;
     inputElement.classList.add(this.cfg.inputInvalidSelector);
   }
 
-  _hideError = (inputElement) => {
+  _hideError (inputElement) {
     const error = this.form.querySelector(`#${inputElement.id}-error`);
     error.textContent = '';
     inputElement.classList.remove(this.cfg.inputInvalidSelector);

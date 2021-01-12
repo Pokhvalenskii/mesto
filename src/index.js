@@ -1,3 +1,4 @@
+import './../src/pages/index.css';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import Popup from './Popup.js';
@@ -16,7 +17,7 @@ import {
   submitEdit,
   profileName,
   profileStatus
-  } from './../utils/constants.js'
+  } from './constants.js'
 
 const popupProfileClass = new Popup('.popup-profile');
 const popupAddClass = new Popup('.popup-add-card');
