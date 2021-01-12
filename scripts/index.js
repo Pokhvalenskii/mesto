@@ -5,23 +5,18 @@ import Section from './Section.js';
 import PopupWithImage from './PopupWithImage.js';
 import PopupWithForm from './PopupWithForm.js';
 import UserInfo from './UserInfo.js';
-
-import {cfgValidation} from './../utils/constants.js'
-import {cardsArray} from './../utils/constants.js'
-
-const btnEdit = document.querySelector('.profile__btn-edit');
-const btnAdd = document.querySelector('.profile__btn-add');
-const name = document.querySelector('.profile__person-name');
-const status = document.querySelector('.profile__person-status');
-const popupAdd = document.querySelector('.popup-add-card');
-const submitAdd = popupAdd.querySelector('.popup__form');
-const popupProfile = document.querySelector('.popup-profile');
-const submitEdit = popupProfile.querySelector('.popup__form');
-const popupImg = document.querySelector('.popup-img');
-export const popupImgPicture = popupImg.querySelector('.popup-img__image')
-export const popupImgTitle = popupImg.querySelector('.popup-img__subtitle')
-const profileName = popupProfile.querySelector('.popup__input_place_up');
-const profileStatus = popupProfile.querySelector('.popup__input_place_down');
+import {
+  cfgValidation,
+  cardsArray,
+  btnEdit,
+  btnAdd,
+  name,
+  status,
+  submitAdd,
+  submitEdit,
+  profileName,
+  profileStatus
+  } from './../utils/constants.js'
 
 const popupProfileClass = new Popup('.popup-profile');
 const popupAddClass = new Popup('.popup-add-card');
