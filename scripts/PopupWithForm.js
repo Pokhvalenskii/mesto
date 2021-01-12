@@ -9,10 +9,11 @@ export default class PopupWithForm extends Popup{
 
   }
   setEventListeners () {
+    console.log('Flag1')
     const bigData = this._getInputValues()
     super.setEventListeners();
     bigData.popup.querySelector('.popup__form').addEventListener('submit', (event) => {
-      console.log(event, 'CLASS');
+      console.log('CLASS');
       // this.submit(bigData.data);
       this.submit(bigData);
       super.close();
