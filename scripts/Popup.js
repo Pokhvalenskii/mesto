@@ -6,19 +6,12 @@ export default class Popup {
     let Esc, closePopup1, closePopup2;
   }
 
-  test() {
-    console.log(this._popup);
-  }
-
   open () {
-    console.log('hello from popup', this._popup)
-
     this._popup.classList.add('popup_active');
     this.setEventListeners();
   }
 
   close () {
-    console.log('click close', this._popup)
     this._popup.classList.remove('popup_active');
     document.removeEventListener('keydown', this.Esc)
 
@@ -30,17 +23,13 @@ export default class Popup {
   }
 
   setEventListeners () {
-    console.log(this._popup, 'POPUP SET EVENT')
-
     this._popup.querySelector('.popup__btn-close')
     .addEventListener('click', this.closePopup2 = () => {
-      console.log('event close1')
       this.close();
     });
 
     this._popup.querySelector('.popup__overlay')
     .addEventListener('click', this.closePopup1 = () => {
-      console.log('event close2')
       this.close();
     });
 
@@ -49,9 +38,7 @@ export default class Popup {
   }
 
   _handleEscClose = (evt) => {
-    // console.log('esc -- ', evt);
     if(evt.key === 'Escape') {
-      console.log('esc click')
       this.close();
     }
   }
