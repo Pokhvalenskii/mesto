@@ -3,7 +3,6 @@ export default class Card {
     this._name = item.name
     this._link = item.link;
     this._selector = cardSelector;
-    // console.log(openPopupImage);
     this._openPopupImage = popupWithImage;
   }
 
@@ -41,7 +40,9 @@ export default class Card {
     });
 
     image.addEventListener('click', () => {
+      this._openPopupImage.setEventListeners();
       this._openPopupImage.open(this._link, this._name);
+
     })
   }
 
