@@ -1,8 +1,8 @@
 export default class Card {
-  constructor(item, selector, popupWithImage) {
+  constructor(item, cardSelector, popupWithImage) {
     this._name = item.name
     this._link = item.link;
-    this._selector = selector;
+    this._selector = cardSelector;
     // console.log(openPopupImage);
     this._openPopupImage = popupWithImage;
   }
@@ -25,13 +25,13 @@ export default class Card {
     image.src = this._link;
     image.alt = this._name;
 
-    this._addEvent(like, junk, image);
+    this._setEventListeners(like, junk, image);
 
     return this.cardItem;
   }
 
 
-  _addEvent (like, junk, image) {
+  _setEventListeners (like, junk, image) {
     like.addEventListener('click', (event) => {
       event.target.classList.toggle('card__btn-like_active');
     });
@@ -41,14 +41,8 @@ export default class Card {
     });
 
     image.addEventListener('click', () => {
-      this._openPopupImage.open();
+      this._openPopupImage.open(this._link, this._name);
     })
-
-    // image.addEventListener('click', () => {
-    //   this.popupWithImage(this._link, this._name, this._selector);
-    // })
-
-
   }
 
 }
