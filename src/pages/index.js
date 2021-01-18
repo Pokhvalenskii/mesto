@@ -22,13 +22,8 @@ import {
   } from '../utils/constants.js'
 
 const popupWithImage = new PopupWithImage(popupImg); // popupImg = '.popup-img'
-
-// popupWithImage.setEventListeners();
-
-const lets = 1;
-
-const validateAddCard = new FormValidator(submitAdd, cfgValidation);
-const validateEditProfile = new FormValidator(submitEdit, cfgValidation);
+const validateAddCard = new FormValidator(submitAdd, cfgValidation); // submitAdd  форма-редактирования
+const validateEditProfile = new FormValidator(submitEdit, cfgValidation); // submitEdit  форма-добавления
 const cardList = new Section({
   data: cardsArray,
   renderer: (item) => {
@@ -37,12 +32,8 @@ const cardList = new Section({
     cardList.addItem(cardElement);
   }
 }, '.cards');
-
-
 const popupWithFormAdd = new PopupWithForm('.popup-add-card', (data) => {
-  console.log(data)
   const inputs = data.querySelectorAll('.popup__input');
-  console.log(inputs)
   const placeUp = inputs[0].value
   const placeDown = inputs[1].value
   const arrData = {name: placeUp, link: placeDown};
@@ -57,9 +48,7 @@ const popupWithFormAdd = new PopupWithForm('.popup-add-card', (data) => {
   submitBtn.classList.remove(cfgValidation.submitStateValidSelector);
   submitBtn.classList.add(cfgValidation.submitStateInvalidSelector);
 });
-const userData = {name, status};
-const userInfo =  new UserInfo(userData)
-
+const userInfo =  new UserInfo(name, status)
 const popupWithFormEdit = new PopupWithForm('.popup-profile', (data) => {
   const inputs = data.querySelectorAll('.popup__input');
   const profileName = inputs[0];
@@ -70,19 +59,19 @@ const popupWithFormEdit = new PopupWithForm('.popup-profile', (data) => {
 cardList.renderer();
 validateAddCard.enableValidation();
 validateEditProfile.enableValidation();
-
 btnEdit.addEventListener('click', () => {
   popupWithFormEdit.open();
+  validateEditProfile.clearErrors();
   popupWithFormEdit.setEventListeners();
-
   profileName.value = name.textContent;
   profileStatus.value = status.textContent;
 });
 
 
 
-btnAdd.addEventListener('click', () => {
+btnAdd.addEventListener('click', () => {  
   popupWithFormAdd.open();
+  validateAddCard.clearErrors();
   popupWithFormAdd.setEventListeners();
 });
 

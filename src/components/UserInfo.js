@@ -1,7 +1,9 @@
 
 export default class UserInfo {
-  constructor(data) {
-    this.userData = data;
+  constructor(name, status) {
+    // this.userData = data;
+    this.name = name;
+    this.status = status;
   }
 
   getUserInfo () {
@@ -9,7 +11,7 @@ export default class UserInfo {
   }
 
   setUserInfo (name, status) {
-    this.userData.name.textContent = name.value;
-    this.userData.status.textContent = status.value;
+    this.name.textContent = name.value;
+    this.status.textContent = status.value;
   }
 }

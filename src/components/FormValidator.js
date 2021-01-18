@@ -9,7 +9,10 @@ export default class FormValidator {
     this.form.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
+    this._setEventListeners();
+  }
 
+  _setEventListeners () {
     this.inputList = this.form.querySelectorAll(this.cfg.inputSelector);
     this.submit = this.form.querySelector(this.cfg.submitSelector);
 
@@ -54,6 +57,28 @@ export default class FormValidator {
     inputElement.classList.remove(this.cfg.inputInvalidSelector);
   }
 
+  clearErrors () {
+    const errorText = this.form.querySelectorAll('.error');
+    const errorInput = this.form.querySelectorAll('.popup__input');
+    const submitBtn = this.form.querySelector('.popup__btn-save');
+
+    if (this.form.closest('.popup-add-card')){
+      submitBtn.setAttribute('disabled', 'true');
+      submitBtn.classList.remove(this.cfg.submitStateValidSelector);
+      submitBtn.classList.add(this.cfg.submitStateInvalidSelector);
+    } else { 
+      submitBtn.removeAttribute('disabled');
+      submitBtn.classList.remove(this.cfg.submitStateInvalidSelector);
+      submitBtn.classList.add(this.cfg.submitStateValidSelector);
+    }
+    
+    errorInput.forEach((element) => {
+      element.classList.remove(this.cfg.inputInvalidSelector);
+    })
+    errorText.forEach((element) => {  //span element
+      element.textContent = '';
+    })
+  }
 
 }
 
