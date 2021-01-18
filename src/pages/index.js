@@ -25,6 +25,8 @@ const popupWithImage = new PopupWithImage(popupImg); // popupImg = '.popup-img'
 
 // popupWithImage.setEventListeners();
 
+const lets = 1;
+
 const validateAddCard = new FormValidator(submitAdd, cfgValidation);
 const validateEditProfile = new FormValidator(submitEdit, cfgValidation);
 const cardList = new Section({
