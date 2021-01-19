@@ -1,9 +1,9 @@
 export default class Card {
-  constructor(item, cardSelector, popupWithImage) {
+  constructor(item, cardSelector, hendlerImage) {
     this._name = item.name
     this._link = item.link;
     this._selector = cardSelector;
-    this._openPopupImage = popupWithImage;
+    this._hendler = hendlerImage
   }
 
   _getTemplate () {
@@ -40,9 +40,7 @@ export default class Card {
     });
 
     image.addEventListener('click', () => {
-      this._openPopupImage.setEventListeners();
-      this._openPopupImage.open(this._link, this._name);
-
+      this._hendler(this._link, this._name);
     })
   }
 

@@ -18,41 +18,44 @@ import {
   profileName,
   profileStatus,
   popupImg,
-  idCardTemplate
+  idCardTemplate,
+  cardsSelector,
+  popupProfileSelector,
+  popupAddCardSelector
   } from '../utils/constants.js'
 
 const popupWithImage = new PopupWithImage(popupImg); // popupImg = '.popup-img'
+
+
 const validateAddCard = new FormValidator(submitAdd, cfgValidation); // submitAdd  форма-редактирования
+
 const validateEditProfile = new FormValidator(submitEdit, cfgValidation); // submitEdit  форма-добавления
 const cardList = new Section({
   data: cardsArray,
   renderer: (item) => {
-    const card = new Card(item, idCardTemplate, popupWithImage); //idCardTemplate = '#tempCard'
+    const card = new Card(item, idCardTemplate, handlePopupImage); //idCardTemplate = '#tempCard'
     const cardElement = card.createCard();
     cardList.addItem(cardElement);
   }
-}, '.cards');
-const popupWithFormAdd = new PopupWithForm('.popup-add-card', (data) => {
-  const inputs = data.querySelectorAll('.popup__input');
-  const placeUp = inputs[0].value
-  const placeDown = inputs[1].value
+}, cardsSelector); // cardsSelector = '.cards'
+
+const popupWithFormAdd = new PopupWithForm(popupAddCardSelector, (data) => { //popupAddCardSelector = '.popup-add-card'
+  const inputs = data // данные с наших полей ввода
+  const placeUp = inputs.input1;
+  const placeDown = inputs.input2;
   const arrData = {name: placeUp, link: placeDown};
-  const card = createCard(arrData, idCardTemplate, popupWithImage); //idCardTemplate = '#tempCard'
+  const card = createCard(arrData, idCardTemplate, handlePopupImage); //idCardTemplate = '#tempCard'
 
   const cardElement = card.createCard();
   cardList.addItem(cardElement);
-  data.reset();
-  const submitBtn = data.querySelector('.popup__btn-save');
-
-  submitBtn.disabled = true;
-  submitBtn.classList.remove(cfgValidation.submitStateValidSelector);
-  submitBtn.classList.add(cfgValidation.submitStateInvalidSelector);
+  popupWithFormAdd.close();
 });
-const userInfo =  new UserInfo(name, status)
-const popupWithFormEdit = new PopupWithForm('.popup-profile', (data) => {
-  const inputs = data.querySelectorAll('.popup__input');
-  const profileName = inputs[0];
-  const profileStatus = inputs[1]
+const userInfo =  new UserInfo(name, status);
+
+const popupWithFormEdit = new PopupWithForm(popupProfileSelector, (data) => { //popupProfileSelector = '.popup-profile'
+  const inputs = data; // данные с наших полей ввода
+  const profileName = inputs.input1;
+  const profileStatus = inputs.input2
   userInfo.setUserInfo(profileName, profileStatus);
 });
 
@@ -67,18 +70,19 @@ btnEdit.addEventListener('click', () => {
   profileStatus.value = status.textContent;
 });
 
-
-
 btnAdd.addEventListener('click', () => {  
   popupWithFormAdd.open();
   validateAddCard.clearErrors();
   popupWithFormAdd.setEventListeners();
 });
 
-
 function createCard (data, selector, popup) {
   const card = new Card(data, selector, popup);
 return card;
 }
 
+function handlePopupImage (a, b) {
+  popupWithImage.open(a,b)
+  popupWithImage.setEventListeners();
+}
 

@@ -47,3 +47,6 @@ export const popupImg = '.popup-img';
 export const profileName = popupProfile.querySelector('.popup__input_place_up');
 export const profileStatus = popupProfile.querySelector('.popup__input_place_down');
 export const idCardTemplate = '#tempCard';
+export const cardsSelector = '.cards';
+export const popupProfileSelector = '.popup-profile';
+export const popupAddCardSelector = '.popup-add-card';
