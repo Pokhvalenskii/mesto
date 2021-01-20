@@ -5,7 +5,8 @@ export const cfgValidation = {
   submitSelector: '.popup__btn-save',
   submitInvalidSelector: '.popup__btn-save_status_invalid',
   submitStateInvalidSelector: 'popup__btn-save_state_invalid',
-  submitStateValidSelector: 'popup__btn-save_state_valid'
+  submitStateValidSelector: 'popup__btn-save_state_valid',
+  spanError: '.error'
 };
 
 export const cardsArray = [

@@ -26,7 +26,6 @@ import {
 
 const popupWithImage = new PopupWithImage(popupImg); // popupImg = '.popup-img'
 const validateAddCard = new FormValidator(submitAdd, cfgValidation); // submitAdd  форма-редактирования
-
 const validateEditProfile = new FormValidator(submitEdit, cfgValidation); // submitEdit  форма-добавления
 const cardList = new Section({
   data: cardsArray,
@@ -36,24 +35,19 @@ const cardList = new Section({
     cardList.addItem(cardElement);
   }
 }, cardsSelector); // cardsSelector = '.cards'
-
 const popupWithFormAdd = new PopupWithForm(popupAddCardSelector, (data) => { //popupAddCardSelector = '.popup-add-card'
-  const inputs = data // данные с наших полей ввода
-  const placeUp = inputs.input1;
-  const placeDown = inputs.input2;
-  const arrData = {name: placeUp, link: placeDown};
+  //data данные с наших полей ввода A1...An
+  const arrData = {name: data.input1, link: data.input2}; //arrData объект с именем и ссылкой
   const card = createCard(arrData, idCardTemplate, handlePopupImage); //idCardTemplate = '#tempCard'
-
   const cardElement = card.createCard();
   cardList.addItem(cardElement);
   popupWithFormAdd.close();
 });
 const userInfo =  new UserInfo(name, status);
-
 const popupWithFormEdit = new PopupWithForm(popupProfileSelector, (data) => { //popupProfileSelector = '.popup-profile'
-  const inputs = data; // данные с наших полей ввода
-  const profileName = inputs.input1;
-  const profileStatus = inputs.input2
+  //data данные с наших полей ввода A1...An
+  const profileName = data.input1;
+  const profileStatus = data.input2
   userInfo.setUserInfo(profileName, profileStatus);
 });
 
@@ -62,17 +56,16 @@ validateAddCard.enableValidation();
 validateEditProfile.enableValidation();
 
 btnEdit.addEventListener('click', () => {
-  console.log('edit click');
-  // validateEditProfile.clearErrors(popupWithFormEdit.getPopupInfo());  
+  profileName.value = name.textContent;
+  profileStatus.value = status.textContent;
   popupWithFormEdit.open();
   validateEditProfile.clearErrors();
   popupWithFormEdit.setEventListeners();
-  profileName.value = name.textContent;
-  profileStatus.value = status.textContent;
+
 });
 
-btnAdd.addEventListener('click', () => {  
-  popupWithFormAdd.open();  
+btnAdd.addEventListener('click', () => {
+  popupWithFormAdd.open();
   validateAddCard.clearErrors();
   popupWithFormAdd.setEventListeners();
 });
@@ -82,8 +75,8 @@ function createCard (data, selector, popup) {
 return card;
 }
 
-function handlePopupImage (a, b) {
-  popupWithImage.open(a,b)
+function handlePopupImage (link, name) {
+  popupWithImage.open(link, name);
   popupWithImage.setEventListeners();
 }
 

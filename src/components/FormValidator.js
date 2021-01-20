@@ -1,3 +1,5 @@
+import { submitAdd } from "../utils/constants";
+
 export default class FormValidator {
 
   constructor(form, cfg) {
@@ -57,34 +59,26 @@ export default class FormValidator {
     inputElement.classList.remove(this.cfg.inputInvalidSelector);
   }
 
-  // _converterInputs (inputsArray) {
-  //   const obj = {};
-  //   for(let i = 0; i < inputsArray.length; i++){
-  //     obj[`input${i+1}`] = inputsArray[i].value;
-  //   }
-  //   return obj;
-  // }
+  clearErrors () {
 
-  clearErrors (dat) {
+    const errorTexts = this.form.querySelectorAll(this.cfg.spanError);
+    const errorInputs = this.form.querySelectorAll(this.cfg.inputSelector);
+    const submitBtn = this.form.querySelector(this.cfg.submitSelector);
 
-    const errorText = this.form.querySelectorAll('.error');
-    const errorInput = this.form.querySelectorAll('.popup__input');
-    const submitBtn = this.form.querySelector('.popup__btn-save');
-
-    if (this.form.closest('.popup-add-card')){
-      submitBtn.setAttribute('disabled', 'true');
-      submitBtn.classList.remove(this.cfg.submitStateValidSelector);
-      submitBtn.classList.add(this.cfg.submitStateInvalidSelector);
-    } else { 
+    if (this.form.checkValidity()) {
       submitBtn.removeAttribute('disabled');
       submitBtn.classList.remove(this.cfg.submitStateInvalidSelector);
       submitBtn.classList.add(this.cfg.submitStateValidSelector);
+    } else {
+      submitBtn.setAttribute('disabled', 'true');
+      submitBtn.classList.remove(this.cfg.submitStateValidSelector);
+      submitBtn.classList.add(this.cfg.submitStateInvalidSelector);
     }
-    
-    errorInput.forEach((element) => {
+
+    errorInputs.forEach((element) => {
       element.classList.remove(this.cfg.inputInvalidSelector);
     })
-    errorText.forEach((element) => {  //span element
+    errorTexts.forEach((element) => {  //span element
       element.textContent = '';
     })
   }
