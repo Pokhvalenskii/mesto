@@ -30,14 +30,13 @@ const validateEditProfile = new FormValidator(submitEdit, cfgValidation); // sub
 const cardList = new Section({
   data: cardsArray,
   renderer: (item) => {
-    const card = new Card(item, idCardTemplate, handlePopupImage); //idCardTemplate = '#tempCard'
+    const card = createCard(item, idCardTemplate, handlePopupImage); //idCardTemplate = '#tempCard'
     const cardElement = card.createCard();
     cardList.addItem(cardElement);
   }
 }, cardsSelector); // cardsSelector = '.cards'
 const popupWithFormAdd = new PopupWithForm(popupAddCardSelector, (data) => { //popupAddCardSelector = '.popup-add-card'
-  //data данные с наших полей ввода A1...An
-  const arrData = {name: data.input1, link: data.input2}; //arrData объект с именем и ссылкой
+  const arrData = {name: data.cardName, link: data.cardLink}; //arrData объект с именем и ссылкой
   const card = createCard(arrData, idCardTemplate, handlePopupImage); //idCardTemplate = '#tempCard'
   const cardElement = card.createCard();
   cardList.addItem(cardElement);
@@ -45,9 +44,8 @@ const popupWithFormAdd = new PopupWithForm(popupAddCardSelector, (data) => { //p
 });
 const userInfo =  new UserInfo(name, status);
 const popupWithFormEdit = new PopupWithForm(popupProfileSelector, (data) => { //popupProfileSelector = '.popup-profile'
-  //data данные с наших полей ввода A1...An
-  const profileName = data.input1;
-  const profileStatus = data.input2
+  const profileName = data.person_name;
+  const profileStatus = data.person_status;
   userInfo.setUserInfo(profileName, profileStatus);
 });
 
