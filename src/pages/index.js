@@ -25,8 +25,6 @@ import {
   } from '../utils/constants.js'
 
 const popupWithImage = new PopupWithImage(popupImg); // popupImg = '.popup-img'
-
-
 const validateAddCard = new FormValidator(submitAdd, cfgValidation); // submitAdd  форма-редактирования
 
 const validateEditProfile = new FormValidator(submitEdit, cfgValidation); // submitEdit  форма-добавления
@@ -62,7 +60,10 @@ const popupWithFormEdit = new PopupWithForm(popupProfileSelector, (data) => { //
 cardList.renderer();
 validateAddCard.enableValidation();
 validateEditProfile.enableValidation();
+
 btnEdit.addEventListener('click', () => {
+  console.log('edit click');
+  // validateEditProfile.clearErrors(popupWithFormEdit.getPopupInfo());  
   popupWithFormEdit.open();
   validateEditProfile.clearErrors();
   popupWithFormEdit.setEventListeners();
@@ -71,7 +72,7 @@ btnEdit.addEventListener('click', () => {
 });
 
 btnAdd.addEventListener('click', () => {  
-  popupWithFormAdd.open();
+  popupWithFormAdd.open();  
   validateAddCard.clearErrors();
   popupWithFormAdd.setEventListeners();
 });

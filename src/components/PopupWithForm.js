@@ -11,7 +11,12 @@ export default class PopupWithForm extends Popup{
 
   setEventListeners () {
     super.setEventListeners();
-    this._popup.addEventListener('submit', this._toWrappingUp)   
+    this._popup.addEventListener('submit', this._toWrappingUp)
+    
+  }
+
+  getPopupInfo () {
+    return this._popup;
   }
 
   _toWrappingUp () {
@@ -25,6 +30,9 @@ export default class PopupWithForm extends Popup{
     for(let i = 0; i < inputsArray.length; i++){
       obj[`input${i+1}`] = inputsArray[i].value;
     }
+
+    console.log('form check', this._popup.querySelector('.popup__input').value);
+
     return obj;
   }
 

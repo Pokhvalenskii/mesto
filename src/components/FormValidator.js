@@ -57,7 +57,16 @@ export default class FormValidator {
     inputElement.classList.remove(this.cfg.inputInvalidSelector);
   }
 
-  clearErrors () {
+  // _converterInputs (inputsArray) {
+  //   const obj = {};
+  //   for(let i = 0; i < inputsArray.length; i++){
+  //     obj[`input${i+1}`] = inputsArray[i].value;
+  //   }
+  //   return obj;
+  // }
+
+  clearErrors (dat) {
+
     const errorText = this.form.querySelectorAll('.error');
     const errorInput = this.form.querySelectorAll('.popup__input');
     const submitBtn = this.form.querySelector('.popup__btn-save');

@@ -29,7 +29,6 @@ export default class Card {
     return this.cardItem;
   }
 
-
   _setEventListeners (like, junk, image) {
     like.addEventListener('click', (event) => {
       event.target.classList.toggle('card__btn-like_active');
