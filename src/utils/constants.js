@@ -44,6 +44,7 @@ const popupAdd = document.querySelector('.popup-add-card');
 export const submitAdd = popupAdd.querySelector('.popup__form');
 const popupProfile = document.querySelector('.popup-profile');
 export const submitEdit = popupProfile.querySelector('.popup__form');
+
 export const popupImg = '.popup-img';
 export const profileName = popupProfile.querySelector('.popup__input_place_up');
 export const profileStatus = popupProfile.querySelector('.popup__input_place_down');
@@ -51,3 +52,4 @@ export const idCardTemplate = '#tempCard';
 export const cardsSelector = '.cards';
 export const popupProfileSelector = '.popup-profile';
 export const popupAddCardSelector = '.popup-add-card';
+export const popupDeleteCardSelector = '.popup-delete-card';

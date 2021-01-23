@@ -22,14 +22,15 @@
       </div>
       <button class="profile__btn-add" type="button"></button>
     </section>
+
     <section class="cards"></section>
+
     <section class="popup popup-profile">
       <div class="popup__overlay"></div>
       <div class="popup-profile__wrapper">
         <button type="button" class="popup__btn-close"></button>
         <div class="popup-profile__content">
           <h2 class="popup-profile__title">Редактировать профиль</h2>
-
           <form class="popup__form" name="popupform" novalidate>
             <input id="edit-name" class="popup__input popup__input_place_up" type="text" minlength="2" maxlength="40" name="person_name" placeholder="Имя" required>
             <span id="edit-name-error" class="error"></span>
@@ -37,28 +38,40 @@
             <span id="edit-status-error" class="error"></span>
             <button class="popup__btn-save popup__btn-save_state_valid" type="submit">Сохранить</button>
           </form>
-
         </div>
       </div>
     </section>
+
     <section class="popup popup-add-card">
       <div class="popup__overlay"></div>
       <div class="popup-add-card__wrapper">
         <button type="button" class="popup__btn-close"></button>
         <div class="popup-add-card__content">
           <h2 class="popup-add-card__title">Новое место</h2>
-
           <form class="popup__form" name="popupform" novalidate>
             <input id="add-name" class="popup__input popup__input_place_up" type="text" minlength="2" maxlength="30" name="cardName" placeholder="Название" required>
             <span id="add-name-error" class="error"></span>
             <input id="add-url" class="popup__input popup__input_place_down" type="url" name="cardLink" placeholder="Ссылка на картинку" required>
             <span id="add-url-error" class="error"></span>
-            <button class="popup__btn-save  popup__btn-save_state_invalid" type="submit">Создать</button>
-          </form>
+            <button class="popup__btn-save  popup__btn-save_state_invalid" type="submit">Создать</button>          </form>
 
         </div>
       </div>
     </section>
+
+    <section class="popup popup-delete-card">
+      <div class="popup__overlay"></div>
+      <div class="popup-delete-card__wrapper">
+        <button class="popup__btn-close"></button>
+        <div class="popup-delete-card__content">
+          <p>Вы уверены?</p>
+          <form class="popup__form">
+            <button class="popup-delete-card__btn-delete" type="submit">Да</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
     <section class="popup popup-img">
       <div class="popup__overlay"></div>
       <div class="popup-img__wrapper">
@@ -67,6 +80,9 @@
         <p class="popup-img__subtitle"></p>
       </div>
     </section>
+
+
+
   </main>
   <footer class="footer">
     <p class="footer__copyrigth">&copy; 2020 Mesto Russia</p>

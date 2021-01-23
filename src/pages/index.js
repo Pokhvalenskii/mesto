@@ -21,28 +21,34 @@ import {
   idCardTemplate,
   cardsSelector,
   popupProfileSelector,
-  popupAddCardSelector
+  popupAddCardSelector,
+  popupDeleteCardSelector,
   } from '../utils/constants.js'
+import DeletePopup from '../components/DeletePopup';
 
 const popupWithImage = new PopupWithImage(popupImg); // popupImg = '.popup-img'
 const validateAddCard = new FormValidator(submitAdd, cfgValidation); // submitAdd  форма-редактирования
 const validateEditProfile = new FormValidator(submitEdit, cfgValidation); // submitEdit  форма-добавления
+
 const cardList = new Section({
   data: cardsArray,
   renderer: (item) => {
-    const card = createCard(item, idCardTemplate, handlePopupImage); //idCardTemplate = '#tempCard'
+    const card = createCard(item, idCardTemplate, handlePopupImage, test); //idCardTemplate = '#tempCard'
     const cardElement = card.createCard();
     cardList.addItem(cardElement);
   }
 }, cardsSelector); // cardsSelector = '.cards'
+
+
 const popupWithFormAdd = new PopupWithForm(popupAddCardSelector, (data) => { //popupAddCardSelector = '.popup-add-card'
   const arrData = {name: data.cardName, link: data.cardLink}; //arrData объект с именем и ссылкой
-  const card = createCard(arrData, idCardTemplate, handlePopupImage); //idCardTemplate = '#tempCard'
+  const card = createCard(arrData, idCardTemplate, handlePopupImage, test); //idCardTemplate = '#tempCard'
   const cardElement = card.createCard();
   cardList.addItem(cardElement);
   popupWithFormAdd.close();
 });
 const userInfo =  new UserInfo(name, status);
+
 const popupWithFormEdit = new PopupWithForm(popupProfileSelector, (data) => { //popupProfileSelector = '.popup-profile'
   const profileName = data.person_name;
   const profileStatus = data.person_status;
@@ -68,13 +74,24 @@ btnAdd.addEventListener('click', () => {
   popupWithFormAdd.setEventListeners();
 });
 
-function createCard (data, selector, popup) {
-  const card = new Card(data, selector, popup);
-return card;
+function createCard (data, selector, popup, test) {
+  const card = new Card(data, selector, popup, test);
+  return card;
 }
 
 function handlePopupImage (link, name) {
   popupWithImage.open(link, name);
   popupWithImage.setEventListeners();
 }
+let eventSet;
+function test (card) {
+  console.log(card);
+
+  const deletePopup = new DeletePopup(card, popupDeleteCardSelector);
+
+  deletePopup.setEventListeners();
+  deletePopup.open();
+}
+
+
 
