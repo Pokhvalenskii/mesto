@@ -23,17 +23,37 @@ import {
   popupProfileSelector,
   popupAddCardSelector,
   popupDeleteCardSelector,
+  profileAvatarBtn,
+  profileAvatarSelector,
+  submitAvatar,
+
+  
   } from '../utils/constants.js'
 import DeletePopup from '../components/DeletePopup';
 
 const popupWithImage = new PopupWithImage(popupImg); // popupImg = '.popup-img'
 const validateAddCard = new FormValidator(submitAdd, cfgValidation); // submitAdd  форма-редактирования
 const validateEditProfile = new FormValidator(submitEdit, cfgValidation); // submitEdit  форма-добавления
+const validateEditAvatar = new FormValidator(submitAvatar, cfgValidation);
+
+
+const popupAvatarEdit = new PopupWithForm (profileAvatarSelector, (data) => {
+
+});
+
+profileAvatarBtn.addEventListener('click', () => {
+  console.log('HELLO AVATAR');  
+  popupAvatarEdit.open();
+  validateEditProfile.clearErrors();
+  popupAvatarEdit.setEventListeners();
+
+  
+})
 
 const cardList = new Section({
   data: cardsArray,
   renderer: (item) => {
-    const card = createCard(item, idCardTemplate, handlePopupImage, test); //idCardTemplate = '#tempCard'
+    const card = createCard(item, idCardTemplate, handlePopupImage, handlePopupDelete); //idCardTemplate = '#tempCard'
     const cardElement = card.createCard();
     cardList.addItem(cardElement);
   }
@@ -42,7 +62,7 @@ const cardList = new Section({
 
 const popupWithFormAdd = new PopupWithForm(popupAddCardSelector, (data) => { //popupAddCardSelector = '.popup-add-card'
   const arrData = {name: data.cardName, link: data.cardLink}; //arrData объект с именем и ссылкой
-  const card = createCard(arrData, idCardTemplate, handlePopupImage, test); //idCardTemplate = '#tempCard'
+  const card = createCard(arrData, idCardTemplate, handlePopupImage, handlePopupDelete); //idCardTemplate = '#tempCard'
   const cardElement = card.createCard();
   cardList.addItem(cardElement);
   popupWithFormAdd.close();
@@ -58,6 +78,8 @@ const popupWithFormEdit = new PopupWithForm(popupProfileSelector, (data) => { //
 cardList.renderer();
 validateAddCard.enableValidation();
 validateEditProfile.enableValidation();
+validateEditAvatar.enableValidation();
+
 
 btnEdit.addEventListener('click', () => {
   profileName.value = name.textContent;
@@ -74,8 +96,8 @@ btnAdd.addEventListener('click', () => {
   popupWithFormAdd.setEventListeners();
 });
 
-function createCard (data, selector, popup, test) {
-  const card = new Card(data, selector, popup, test);
+function createCard (data, selector, popup, handlePopupDelete) {
+  const card = new Card(data, selector, popup, handlePopupDelete);
   return card;
 }
 
@@ -83,12 +105,9 @@ function handlePopupImage (link, name) {
   popupWithImage.open(link, name);
   popupWithImage.setEventListeners();
 }
-let eventSet;
-function test (card) {
-  console.log(card);
 
+function handlePopupDelete (card) {
   const deletePopup = new DeletePopup(card, popupDeleteCardSelector);
-
   deletePopup.setEventListeners();
   deletePopup.open();
 }

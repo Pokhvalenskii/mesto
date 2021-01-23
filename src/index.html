@@ -72,6 +72,23 @@
       </div>
     </section>
 
+    <section class="popup popup-profile-edit">
+      <div class="popup__overlay"></div>
+      <div class="popup-profile-edit__wrapper">
+        <button class="popup__btn-close"></button>
+        <div class="popup-profile-edit__content">
+          <p class="popup-profile-edit__title">Обновить аватар</p>
+          <form class="popup__form">
+            
+            <input id="add-url" class="popup__input popup__input_place_up" type="url" name="ImageLink" placeholder="Ссылка на картинку" required>
+            <span id="add-url-error" class="error"></span>
+
+            <button class="popup__btn-save popup__btn-save_state_valid" type="submit">Да</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
     <section class="popup popup-img">
       <div class="popup__overlay"></div>
       <div class="popup-img__wrapper">

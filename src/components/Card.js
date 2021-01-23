@@ -1,10 +1,10 @@
 export default class Card {
-  constructor(item, cardSelector, hendlerImage, test) {
+  constructor(item, cardSelector, hendlerImage, handlePopupDelete) {
     this._name = item.name
     this._link = item.link;
     this._selector = cardSelector;
     this._hendlerImage = hendlerImage
-    this._test = test;
+    this._handlePopupDelete = handlePopupDelete;
   }
 
   _getTemplate () {
@@ -36,12 +36,9 @@ export default class Card {
     });
 
     junk.addEventListener('click', (event) => {
-      // event.target.closest('.card').remove();
-      this._test(event.target.closest('.card'));
-      // document.querySelector('.popup-delete-card').classList.add('popup_active');
-      // this._hendlerPopup(event.target.closest('.card'))
-
+      this._handlePopupDelete(event.target.closest('.card'));
     });
+    
     image.addEventListener('click', () => {
       this._hendlerImage(this._link, this._name);
     })
