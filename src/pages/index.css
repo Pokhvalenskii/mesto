@@ -50,6 +50,7 @@
 @import url(../blocks/popup-delete-card/__wrapper/popup-delete-card__wrapper.css);
 @import url(../blocks/popup-delete-card/__content/popup-delete-card__content.css);
 @import url(../blocks/popup-delete-card/__btn-delete/popup-delete-card__btn-delete.css);
+@import url(../blocks/popup-delete-card/__title/popup-delete-card__title.css);
 
 /* Попап добаления карточки */
 @import url(../blocks/popup-add-card/popup-add-card.css);
