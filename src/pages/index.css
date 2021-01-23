@@ -37,6 +37,7 @@
 @import url(../blocks/card/__btn-like/card__btn-like.css);
 @import url(../blocks/card/__btn-like/_active/card__btn-like_active.css);
 @import url(../blocks/card/__btn-remove/card__btn-remove.css);
+@import url(../blocks/card/__counter-like/card__counter-likes.css);
 
 /* Попап общий */
 @import url(../blocks/popup/popup.css);
