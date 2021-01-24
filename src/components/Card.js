@@ -12,33 +12,53 @@ export default class Card {
     .querySelector(this._selector)
     .content
     .cloneNode(true);
-
+    console.log(template);
     return template;
+  }
+
+  createMyCard () {
+
+    this.myCardItem = this.createCard();
+    this.myCardItem.querySelector('.card__image').insertAdjacentHTML('beforebegin', '<button class="card__btn-remove"></button>');
+    console.log(this.myCardItem.querySelector('.card__image-wrapper'))
+    this.myCardItem
+      .querySelector('.card__btn-remove')
+      .addEventListener('click', (evt) => {
+        this._handlePopupDelete(evt.target.closest('.card'));
+      })
+
+    return this.myCardItem;
+  }
+
+  _createElementJunk () {
+
   }
 
   createCard () {
     this.cardItem = this._getTemplate();
+
     const like = this.cardItem.querySelector('.card__btn-like');
-    const junk = this.cardItem.querySelector('.card__btn-remove');
+
+    // const junk = this.cardItem.querySelector('.card__btn-remove');
     const image = this.cardItem.querySelector('.card__image');
     this.cardItem.querySelector('.card__text').textContent = this._name;
     image.src = this._link;
     image.alt = this._name;
 
-    this._setEventListeners(like, junk, image);
-
+    this._setEventListeners(like, image);
+    // console.log(this.cardItem, 'CARD')
     return this.cardItem;
   }
 
-  _setEventListeners (like, junk, image) {
+  _setEventListeners (like, image) {
     like.addEventListener('click', (event) => {
       event.target.classList.toggle('card__btn-like_active');
     });
 
-    junk.addEventListener('click', (event) => {
-      this._handlePopupDelete(event.target.closest('.card'));
-    });
-    
+    // junk.addEventListener('click', () => {
+    //   this._handlePopupDelete(event.target.closest('.card'));
+    // })
+
     image.addEventListener('click', () => {
       this._hendlerImage(this._link, this._name);
     })

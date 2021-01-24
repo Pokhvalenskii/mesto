@@ -27,7 +27,7 @@ import {
   profileAvatarSelector,
   submitAvatar,
 
-  
+
   } from '../utils/constants.js'
 import DeletePopup from '../components/DeletePopup';
 
@@ -42,12 +42,12 @@ const popupAvatarEdit = new PopupWithForm (profileAvatarSelector, (data) => {
 });
 
 profileAvatarBtn.addEventListener('click', () => {
-  console.log('HELLO AVATAR');  
+  console.log('HELLO AVATAR');
   popupAvatarEdit.open();
   validateEditProfile.clearErrors();
   popupAvatarEdit.setEventListeners();
 
-  
+
 })
 
 const cardList = new Section({
@@ -55,6 +55,7 @@ const cardList = new Section({
   renderer: (item) => {
     const card = createCard(item, idCardTemplate, handlePopupImage, handlePopupDelete); //idCardTemplate = '#tempCard'
     const cardElement = card.createCard();
+    // console.dir(cardElement)
     cardList.addItem(cardElement);
   }
 }, cardsSelector); // cardsSelector = '.cards'
@@ -63,7 +64,7 @@ const cardList = new Section({
 const popupWithFormAdd = new PopupWithForm(popupAddCardSelector, (data) => { //popupAddCardSelector = '.popup-add-card'
   const arrData = {name: data.cardName, link: data.cardLink}; //arrData объект с именем и ссылкой
   const card = createCard(arrData, idCardTemplate, handlePopupImage, handlePopupDelete); //idCardTemplate = '#tempCard'
-  const cardElement = card.createCard();
+  const cardElement = card.createMyCard();
   cardList.addItem(cardElement);
   popupWithFormAdd.close();
 });
