@@ -1,10 +1,15 @@
+
 export default class Card {
-  constructor(item, cardSelector, hendlerImage, handlePopupDelete) {
-    this._name = item.name
+  constructor(item, cardSelector, hendlerImage, handlePopupDelete, counterLikes, ID, idCard, handleLike) {
+    this._name = item.name;
     this._link = item.link;
     this._selector = cardSelector;
     this._hendlerImage = hendlerImage
     this._handlePopupDelete = handlePopupDelete;
+    this._likes = counterLikes;
+    this._ID = ID;
+    this._idCard = idCard;
+    this._handleLike = handleLike;
   }
 
   _getTemplate () {
@@ -16,44 +21,33 @@ export default class Card {
     return template;
   }
 
-  createMyCard () {
-
-    this.myCardItem = this.createCard();
-    this.myCardItem.querySelector('.card__image').insertAdjacentHTML('beforebegin', '<button class="card__btn-remove"></button>');
-    // console.log(this.myCardItem.querySelector('.card__image-wrapper'))
-    this.myCardItem
-      .querySelector('.card__btn-remove')
-      .addEventListener('click', (evt) => {
-        this._handlePopupDelete(evt.target.closest('.card'));
-      })
-
-    return this.myCardItem;
-  }
-
   createCard () {
     this.cardItem = this._getTemplate();
-
     const like = this.cardItem.querySelector('.card__btn-like');
-
-    // const junk = this.cardItem.querySelector('.card__btn-remove');
+    const counter = this.cardItem.querySelector('.card__counter-likes');
     const image = this.cardItem.querySelector('.card__image');
+
+    if(this._ID === 'f3b95941428d0eb59b678fce'){
+      // console.log('ЭТО МОЯ КАРТОЧКА')
+      image.insertAdjacentHTML('beforebegin', '<button class="card__btn-remove"></button>');
+      this.cardItem.querySelector('.card__btn-remove').addEventListener('click', (evt) => {
+        this._handlePopupDelete(evt.target.closest('.card'), this._idCard);
+      })
+    }
+    counter.textContent = this._likes
     this.cardItem.querySelector('.card__text').textContent = this._name;
     image.src = this._link;
     image.alt = this._name;
-
     this._setEventListeners(like, image);
-    // console.log(this.cardItem, 'CARD')
     return this.cardItem;
   }
 
   _setEventListeners (like, image) {
     like.addEventListener('click', (event) => {
       event.target.classList.toggle('card__btn-like_active');
+      console.log(event.target)
+      this._handleLike(event.target, this._idCard)
     });
-
-    // junk.addEventListener('click', () => {
-    //   this._handlePopupDelete(event.target.closest('.card'));
-    // })
 
     image.addEventListener('click', () => {
       this._hendlerImage(this._link, this._name);

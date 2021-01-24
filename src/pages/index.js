@@ -43,16 +43,11 @@ const api = new Api({
   groupId: 'cohort-19'
 })
 
-// api.editAvatar()
-
-api.getInitialUser()
-  .then(res => {
-    console.log(res);
-  })
-
-// const popupAvatarEdit = new PopupWithForm (profileAvatarSelector, (data) => {
-
-// });
+const popupAvatarEdit = new PopupWithForm (profileAvatarSelector, (data) => {
+  // console.log(data.ImageLink);
+  api.editAvatar(data.ImageLink);
+  document.querySelector('.profile__avatar-image').src = data.ImageLink;
+});
 
 profileAvatarBtn.addEventListener('click', () => {
   popupAvatarEdit.open();
@@ -61,29 +56,35 @@ profileAvatarBtn.addEventListener('click', () => {
 })
 
 const cardList = new CardSection(cardsSelector); // cardsSelector = '.cards'
+
 const popupWithFormAdd = new PopupWithForm(popupAddCardSelector, (data) => { //popupAddCardSelector = '.popup-add-card'
-  const arrData = {name: data.cardName, link: data.cardLink}; //arrData объект с именем и ссылкой
-  const card = createCard(arrData, idCardTemplate, handlePopupImage, handlePopupDelete); //idCardTemplate = '#tempCard'
-  const cardElement = card.createMyCard();
-  cardList.addItem(cardElement);
-  popupWithFormAdd.close();
+  api.addCard(data.cardName, data.cardLink)
+    .then(res => {
+      // console.log(res)
+      const arrData = {name: data.cardName, link: data.cardLink}; //arrData объект с именем и ссылкой
+      const card = createCard(arrData, idCardTemplate, handlePopupImage, handlePopupDelete); //idCardTemplate = '#tempCard'
+      const cardElement = card.createCard();
+      cardList.addItem(cardElement);
+      popupWithFormAdd.close();
+    });
+
 });
 
 const userInfo =  new UserInfo(name, status);
 api.getInitialUser()
   .then(res => {
+    // console.log(res)
     userInfo.setUserInfo(res.name, res.about)
   })
 
 const popupWithFormEdit = new PopupWithForm(popupProfileSelector, (data) => { //popupProfileSelector = '.popup-profile'
-  console.log(data);
-  api.editAvatar(data.person_name, data.person_status);
+  // console.log(data);
+  api.editProfile(data.person_name, data.person_status);
   const profileName = data.person_name;
   const profileStatus = data.person_status;
   userInfo.setUserInfo(profileName, profileStatus);
 });
 
-// cardList.renderer();
 validateAddCard.enableValidation();
 validateEditProfile.enableValidation();
 validateEditAvatar.enableValidation();
@@ -104,8 +105,9 @@ btnAdd.addEventListener('click', () => {
   popupWithFormAdd.setEventListeners();
 });
 
-function createCard (data, selector, popup, handlePopupDelete) {
-  const card = new Card(data, selector, popup, handlePopupDelete);
+function createCard (data, selector, popup, handlePopupDelete, counterLikes, ID, idCard, handleLike) {
+  const card = new Card(data, selector, popup, handlePopupDelete, counterLikes, ID, idCard, handleLike);
+  // console.log(card)
   return card;
 }
 
@@ -114,19 +116,32 @@ function handlePopupImage (link, name) {
   popupWithImage.setEventListeners();
 }
 
-function handlePopupDelete (card) {
+function handlePopupDelete (card, idCard) {
+  api.deleteCard(idCard);
   const deletePopup = new DeletePopup(card, popupDeleteCardSelector);
   deletePopup.setEventListeners();
   deletePopup.open();
 }
 
+function handleLike (like, idCard) {
+    if(like.classList.contains('card__btn-like_active')){
+      // console.log('ЛАЙК СТОИТ')
+      api.like(idCard);
+
+    } else {
+      // console.log('ЛАЙК НЕ СТОИТ')
+      api.removeLike(idCard);
+    }
+}
+
 api.getInitialCards()
   .then((res) => {
-    console.log(res);
+    // console.log(res);
     const cardL = new Section({
       data: res,
       renderer: (item) => {
-        const card = createCard(item, idCardTemplate, handlePopupImage, handlePopupDelete); //idCardTemplate = '#tempCard'
+        // console.log(item.owner._id)
+        const card = createCard(item, idCardTemplate, handlePopupImage, handlePopupDelete, item.likes.length, item.owner._id, item._id, handleLike); //idCardTemplate = '#tempCard'
         const cardElement = card.createCard();
         // console.dir(cardElement)
         cardL.addItem(cardElement);

@@ -1,16 +1,5 @@
 import CardSection from '../components/CardSection.js';
 
-// export default class Section extends CardSection{
-//   constructor(containerSelector) {
-//     super(containerSelector);
-//   }
-
-//   addItem (element) {
-//     console.log(this._container)
-//     this._container.prepend(element);
-//   }
-// }
-
 export default class Section extends CardSection{
   constructor({data, renderer}, containerSelector) {
     super(containerSelector);
