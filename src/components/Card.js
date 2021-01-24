@@ -30,10 +30,6 @@ export default class Card {
     return this.myCardItem;
   }
 
-  _createElementJunk () {
-
-  }
-
   createCard () {
     this.cardItem = this._getTemplate();
 
