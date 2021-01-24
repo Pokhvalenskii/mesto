@@ -1,5 +1,19 @@
-export default class Section {
-  constructor( {data, renderer}, containerSelector) {
+import CardSection from '../components/CardSection.js';
+
+// export default class Section extends CardSection{
+//   constructor(containerSelector) {
+//     super(containerSelector);
+//   }
+
+//   addItem (element) {
+//     console.log(this._container)
+//     this._container.prepend(element);
+//   }
+// }
+
+export default class Section extends CardSection{
+  constructor({data, renderer}, containerSelector) {
+    super(containerSelector);
     this._items = data;
     this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
@@ -7,9 +21,5 @@ export default class Section {
 
   renderer () {
     this._items.forEach(item => this._renderer(item));
-  }
-
-  addItem (element) {
-    this._container.prepend(element);
   }
 }

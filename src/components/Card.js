@@ -12,7 +12,7 @@ export default class Card {
     .querySelector(this._selector)
     .content
     .cloneNode(true);
-    console.log(template);
+    // console.log(template);
     return template;
   }
 
@@ -20,7 +20,7 @@ export default class Card {
 
     this.myCardItem = this.createCard();
     this.myCardItem.querySelector('.card__image').insertAdjacentHTML('beforebegin', '<button class="card__btn-remove"></button>');
-    console.log(this.myCardItem.querySelector('.card__image-wrapper'))
+    // console.log(this.myCardItem.querySelector('.card__image-wrapper'))
     this.myCardItem
       .querySelector('.card__btn-remove')
       .addEventListener('click', (evt) => {
