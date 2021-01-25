@@ -1,6 +1,6 @@
 
 export default class UserInfo {
-  constructor(name, status) {    
+  constructor(name, status) {
     this._name = name;
     this._status = status;
     this._userData = {name: this._name, status: this._status};

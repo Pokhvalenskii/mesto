@@ -1,21 +1,21 @@
 import PopupWithForm from "./PopupWithForm";
 
 export default class DeletePopup extends PopupWithForm {
-  constructor(card, popupSelector){
+  constructor(popupSelector){
     super(popupSelector);
-    this.card = card;
+    // this.card = card;
   }
 
-  delete() {
-    this.card.closest('.card').remove();
+  delete(card) {
+    card.closest('.card').remove();
   }
 
-  setEventListeners () {
+  setEventListeners (card) {
     super.setEventListeners();
     this._popup.querySelector('.popup__form')
       .addEventListener('click', this.param = (evt) => {
         evt.preventDefault();
-        this.delete()
+        this.delete(card)
         this.close()
       })
   }
