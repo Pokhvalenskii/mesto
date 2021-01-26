@@ -14,7 +14,6 @@ export default class PopupWithForm extends Popup{
   }
 
   _toWrappingUp () {
-    console.log('ВОТ ТУТ САБМИТ')
     this.submit(this._getInputValues());
     this.close()
   }

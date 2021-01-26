@@ -1,11 +1,3 @@
-import Api from '../components/Api.js';
-
-const api = new Api({
-  urlApi: 'https://mesto.nomoreparties.co/v1/',
-  token: '8675e632-7ad1-4f28-9202-69cb55994239',
-  groupId: 'cohort-19'
-});
-
 export const cfgValidation = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -46,6 +38,7 @@ export const cfgValidation = {
 
 export const btnEdit = document.querySelector('.profile__btn-edit');
 export const btnAdd = document.querySelector('.profile__btn-add');
+// export const btnConfirmDelete = document.querySelector('')
 export const name = document.querySelector('.profile__person-name');
 export const status = document.querySelector('.profile__person-status');
 const popupAdd = document.querySelector('.popup-add-card');
@@ -53,23 +46,17 @@ export const submitAdd = popupAdd.querySelector('.popup__form');
 const popupProfile = document.querySelector('.popup-profile');
 export const submitEdit = popupProfile.querySelector('.popup__form');
 export const popupImg = '.popup-img';
-
-
 export const profileName = popupProfile.querySelector('.popup__input_place_up');
 export const profileStatus = popupProfile.querySelector('.popup__input_place_down');
-
-
-
+export const selectorAvatarImage = document.querySelector('.profile__avatar-image');
 export const idCardTemplate = '#tempCard';
 export const cardsSelector = '.cards';
 export const popupProfileSelector = '.popup-profile';
 export const popupAddCardSelector = '.popup-add-card';
 export const popupDeleteCardSelector = '.popup-delete-card';
-
 export const profileAvatarSelector = '.popup-profile-edit';
 export const submitAvatar = document.querySelector(profileAvatarSelector).querySelector('.popup__form');
-
-
+export const submitConfirmDelete = document.querySelector(popupDeleteCardSelector).querySelector('.popup__form');
 export const profileAvatarBtn = document.querySelector('.profile').querySelector('.profile__avatar-image');
 
 

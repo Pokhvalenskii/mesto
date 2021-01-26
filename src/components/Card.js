@@ -38,8 +38,8 @@ export default class Card {
       // console.log('ЭТО МОЯ КАРТОЧКА')
       image.insertAdjacentHTML('beforebegin', '<button class="card__btn-remove"></button>');
       this.cardItem.querySelector('.card__btn-remove').addEventListener('click', (evt) => {
-        console.log('setdeleteButton')
-        // this._handlePopupDelete(evt.target.closest('.card'), this._idCard);
+        // console.log('setdeleteButton')
+        this._handlePopupDelete(evt.target.closest('.card'), this._idCard);
       })
     }
     counter.textContent = this._likes.length
