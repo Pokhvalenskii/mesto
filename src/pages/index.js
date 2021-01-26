@@ -52,8 +52,7 @@ api.getInitialUser()
     .then(userInfo => {
       api.getInitialCards()
         .then(res => {
-          // console.log(res)
-          // console.log(userInfo)
+          console.log(res);
           section.renderer(res, userInfo)
         })
     })
@@ -122,13 +121,7 @@ profileAvatarBtn.addEventListener('click', () => {
 })
 
 // const cardList = new CardSection(cardsSelector); // cardsSelector = '.cards'
-
-
-
 const userInfo =  new UserInfo(name, status);
-
-
-
 const popupWithFormEdit = new PopupWithForm(popupProfileSelector, (data) => { //popupProfileSelector = '.popup-profile'
   // console.log(data);
   api.editProfile(data.person_name, data.person_status);

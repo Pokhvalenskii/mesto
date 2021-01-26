@@ -32,7 +32,7 @@ export default class Card {
 
   createCard (user) {
     this.cardItem = this._getTemplate();
-    const like = this.cardItem.querySelector('.card__btn-like');
+    const likeSelector = this.cardItem.querySelector('.card__btn-like');
     const counter = this.cardItem.querySelector('.card__counter-likes');
     const image = this.cardItem.querySelector('.card__image');
 
@@ -44,15 +44,27 @@ export default class Card {
       })
     }
     counter.textContent = this._likes.length
+    // console.log('likesID',  this._likes);
+    if(this._likes.length >= 1) {
+      // console.log('на этой карточке больше 1 лайка');
+      this._likes.forEach(like => {
+        // console.log(like._id === user._id, 'картачка №: ')
+        if(like._id === user._id) {
+          // console.log('это моя карточка')
+          likeSelector.classList.add('card__btn-like_active');
+          console.log(like)
+        }
+      });
+    }
     this.cardItem.querySelector('.card__text').textContent = this._name;
     image.src = this._link;
     image.alt = this._name;
-    this._setEventListeners(like, image, counter);
+    this._setEventListeners(likeSelector, image, counter);
     return this.cardItem;
   }
 
-  _setEventListeners (like, image, counter) {
-    like.addEventListener('click', (event) => {
+  _setEventListeners (likeSelector, image, counter) {
+    likeSelector.addEventListener('click', (event) => {
       event.target.classList.toggle('card__btn-like_active');
       // console.log(event.target)
       this._handleLike(event.target, this._idCard, counter)

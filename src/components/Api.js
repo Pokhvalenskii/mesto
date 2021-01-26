@@ -5,6 +5,7 @@ export default class Api {
     this._groupId = date.groupId; // cohort-19
   }
 
+  
   getInitialCards() {
     return fetch(`${this._urlApi}${this._groupId}/cards`, {
       headers: {
