@@ -4,9 +4,9 @@ class NewSection {
     this._container = document.querySelector(containerSelector);
   }
 
-  renderer (items, userInfo){
-    items.forEach(item => {
-      this._renderer(item, userInfo);
+  renderer (arrCard, user){
+    arrCard.forEach(card => {
+      this._renderer(card, user);
     });
   }
 

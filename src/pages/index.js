@@ -43,68 +43,80 @@ const api = new Api({
   groupId: 'cohort-19'
 })
 
-api.getInitialUser()
-  .then(res => {
-    userInfo.setUserInfo(res.name, res.about)
-    document.querySelector('.profile__avatar-image').src = res.avatar;
-    return res;
-  })
-    .then(userInfo => {
-      api.getInitialCards()
-        .then(res => {
-          console.log(res);
-          section.renderer(res, userInfo)
-        })
-    })
+const section = new NewSection({ 
+  renderer: (cardItem, user) => { 
+    console.log('ITEMS', cardItem)
+    console.log('USER', user)
 
-const section = new NewSection({
-  renderer: (item, userInfo) => {
     const card = createCard(
-      item,
-      idCardTemplate,
-      handlePopupImage,
-      handlePopupDelete,
-      handleLike,
-    )
-    const cardElement = card.createCard(userInfo);
-    section.addItem(cardElement);
-  }
-}, cardsSelector)
+      cardItem,
+      user,       
+      idCardTemplate, 
+      handlePopupImage, 
+      handlePopupDelete, 
+      handleLike, 
+    ) 
+    const cardElement = card.createCard(); 
+    section.addItem(cardElement); 
+  } 
+}, cardsSelector) 
+
+api.getInitialUser()
+  .then(res => {    
+    const resUser = res;
+    userInfo.setUserInfo(resUser.name, resUser.about) 
+    document.querySelector('.profile__avatar-image').src = resUser.avatar;
+    console.log('USER',resUser)
+    api.getInitialCards()
+      .then(res => {        
+        const resCard = res;
+        console.log('CARDS',resCard);
+        section.renderer(resCard, resUser)
+      })
+  })
 
 const popupWithFormAdd = new PopupWithForm(
   popupAddCardSelector,
   (data) => { //popupAddCardSelector = '.popup-add-card'
   api.addCard(data.cardName, data.cardLink)
-  const itemData = {name: data.cardName, link: data.cardLink, likes: 0, _id: 0, owner: {_id: 'asdfsd'}};
-   //arrData объект с именем и ссылкой
-  api.getInitialUser()
     .then(res => {
-      const card = createCard(
-        itemData,
-        idCardTemplate,
-        handlePopupImage,
-        handlePopupDelete,
-        handleLike,
-      )
-      const cardElement = card.createCard(res);
-      section.addItem(cardElement);
+      console.log(res)
+      const resCard = res;
+      api.getInitialUser()
+        .then(res => {
+          const resUser = res;
+          console.log(resCard, 'ЭТО НАША КАРТОЧКА ПОСЛЕ ДОБАВЛЕНИЯ');
+          console.log(resUser, 'А ЭТО НАШ ЮЗЕР ПОСЛЕ ПОЛУЧЕНИЯ ОТВЕТА');
+          const card = createCard(
+            resCard,
+            resUser,
+            idCardTemplate,
+            handlePopupImage,
+            handlePopupDelete,
+            handleLike,
+          )
+          const cardElement = card.createCard()
+          section.addItem(cardElement);
+        })
+      popupWithFormAdd.close();
     })
-    popupWithFormAdd.close();
   }
 );
 
 function createCard (
-  item,
-  cardSelector,
+  resCard,
+  resUser,
+  idCardTemplate,
   handlePopupImage,
   handlePopupDelete,
   handleLike) {
     const card = new Card(
-    item,
-    cardSelector,
-    handlePopupImage,
-    handlePopupDelete,
-    handleLike);
+      resCard,
+      resUser,
+      idCardTemplate,
+      handlePopupImage,
+      handlePopupDelete,
+      handleLike);
   return card;
 }
 
@@ -161,6 +173,7 @@ const deletePopup = new DeletePopup(popupDeleteCardSelector);
 
 function handlePopupDelete (card, idCard) {
   api.deleteCard(idCard);
+  console.log('delete popup')
   deletePopup.setEventListeners(card);
   deletePopup.open();
 }

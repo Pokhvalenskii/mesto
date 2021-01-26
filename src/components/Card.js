@@ -1,24 +1,47 @@
 
 export default class Card {
+  // constructor(
+  //   item,
+  //   cardSelector,
+  //   hendlerImage,
+  //   handlePopupDelete,
+  //   // counterLikes,
+  //   // ID,
+  //   // idCard,
+  //   handleLike) {
+  //     this._name = item.name;
+  //     this._link = item.link;
+  //     this._selector = cardSelector;
+  //     this._hendlerImage = hendlerImage
+  //     this._handlePopupDelete = handlePopupDelete;
+  //     this._handleLike = handleLike;
+  //     // console.log('Наш айтем', item)
+
+  //     this._item = item;
+  //     this._likes = item.likes;
+  //     this._ID = item.owner._id;
+  //     this._idCard = item._id;
+  // }
+
   constructor(
-    item,
+    card,
+    user,
     cardSelector,
     hendlerImage,
     handlePopupDelete,
-    // counterLikes,
-    // ID,
-    // idCard,
     handleLike) {
-      this._name = item.name;
-      this._link = item.link;
+      this._name = card.name;
+      this._link = card.link;
       this._selector = cardSelector;
       this._hendlerImage = hendlerImage
       this._handlePopupDelete = handlePopupDelete;
       this._handleLike = handleLike;
-      this._item = item;
-      this._likes = item.likes;
-      this._ID = item.owner._id;
-      this._idCard = item._id;
+      // console.log('Наш айтем', item)      
+      this._likes = card.likes;
+      this._idUserCard = card.owner._id;
+      this._idCard = card._id;
+      this._idUser = user._id;
+      console.log('HELLO')
   }
 
   _getTemplate () {
@@ -26,17 +49,17 @@ export default class Card {
     .querySelector(this._selector)
     .content
     .cloneNode(true);
-    // console.log(template);
     return template;
   }
 
-  createCard (user) {
+  createCard () {
+    // console.log(this._ID, ' <= наш айди')
     this.cardItem = this._getTemplate();
     const likeSelector = this.cardItem.querySelector('.card__btn-like');
     const counter = this.cardItem.querySelector('.card__counter-likes');
     const image = this.cardItem.querySelector('.card__image');
 
-    if(this._ID === user._id){
+    if(this._idUserCard === this._idUser){
       // console.log('ЭТО МОЯ КАРТОЧКА')
       image.insertAdjacentHTML('beforebegin', '<button class="card__btn-remove"></button>');
       this.cardItem.querySelector('.card__btn-remove').addEventListener('click', (evt) => {
@@ -49,10 +72,10 @@ export default class Card {
       // console.log('на этой карточке больше 1 лайка');
       this._likes.forEach(like => {
         // console.log(like._id === user._id, 'картачка №: ')
-        if(like._id === user._id) {
+        if(like._id === this._idUser) {
           // console.log('это моя карточка')
           likeSelector.classList.add('card__btn-like_active');
-          console.log(like)
+          // console.log(like)
         }
       });
     }
@@ -68,6 +91,8 @@ export default class Card {
       event.target.classList.toggle('card__btn-like_active');
       // console.log(event.target)
       this._handleLike(event.target, this._idCard, counter)
+      // this._handleLike(event.target, this._ID, counter)
+
     });
 
     image.addEventListener('click', () => {
