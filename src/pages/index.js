@@ -45,9 +45,8 @@ const api = new Api({
 
 const section = new NewSection({ 
   renderer: (cardItem, user) => { 
-    console.log('ITEMS', cardItem)
-    console.log('USER', user)
-
+    // console.log('ITEMS', cardItem)
+    // console.log('USER', user)
     const card = createCard(
       cardItem,
       user,       
@@ -64,16 +63,16 @@ const section = new NewSection({
 api.getInitialUser()
   .then(res => {    
     const resUser = res;
-    userInfo.setUserInfo(resUser.name, resUser.about) 
+    userInfo.setUserInfo(resUser.name, resUser.about, res.avatar) 
     document.querySelector('.profile__avatar-image').src = resUser.avatar;
-    console.log('USER',resUser)
+    // console.log('USER',resUser)
     api.getInitialCards()
       .then(res => {        
         const resCard = res;
-        console.log('CARDS',resCard);
+        // console.log('CARDS',resCard);
         section.renderer(resCard, resUser)
       })
-  })
+  })   
 
 const popupWithFormAdd = new PopupWithForm(
   popupAddCardSelector,
@@ -94,10 +93,10 @@ const popupWithFormAdd = new PopupWithForm(
             handlePopupImage,
             handlePopupDelete,
             handleLike,
-          )
+          )          
           const cardElement = card.createCard()
           section.addItem(cardElement);
-        })
+        })    
       popupWithFormAdd.close();
     })
   }
@@ -132,14 +131,18 @@ profileAvatarBtn.addEventListener('click', () => {
   popupAvatarEdit.setEventListeners();
 })
 
+const ava = document.querySelector('.profile__avatar-image')
 // const cardList = new CardSection(cardsSelector); // cardsSelector = '.cards'
-const userInfo =  new UserInfo(name, status);
+const userInfo =  new UserInfo(name, status, ava);
 const popupWithFormEdit = new PopupWithForm(popupProfileSelector, (data) => { //popupProfileSelector = '.popup-profile'
   // console.log(data);
-  api.editProfile(data.person_name, data.person_status);
-  const profileName = data.person_name;
-  const profileStatus = data.person_status;
-  userInfo.setUserInfo(profileName, profileStatus);
+  api.editProfile(data.person_name, data.person_status)
+    .then(res => {
+      console.log('ПОМЕНЯЛ АВУ', res)
+      const profileName = data.person_name;
+      const profileStatus = data.person_status;
+      userInfo.setUserInfo(profileName, profileStatus, res.avatar)
+    })  
 });
 
 validateAddCard.enableValidation();
@@ -153,7 +156,6 @@ btnEdit.addEventListener('click', () => {
   popupWithFormEdit.open();
   validateEditProfile.clearErrors();
   popupWithFormEdit.setEventListeners();
-
 });
 
 btnAdd.addEventListener('click', () => {
@@ -162,8 +164,6 @@ btnAdd.addEventListener('click', () => {
   popupWithFormAdd.setEventListeners();
 });
 
-
-
 function handlePopupImage (link, name) {
   popupWithImage.open(link, name);
   popupWithImage.setEventListeners();
@@ -171,10 +171,15 @@ function handlePopupImage (link, name) {
 
 const deletePopup = new DeletePopup(popupDeleteCardSelector);
 
+
 function handlePopupDelete (card, idCard) {
-  api.deleteCard(idCard);
+  api.deleteCard(idCard)
+    .then(res => {
+      console.log('RES УДАЛЕНИЯ ', res)
+      deletePopup.delete(card);
+    })
   console.log('delete popup')
-  deletePopup.setEventListeners(card);
+  // deletePopup.setEventListeners(card);
   deletePopup.open();
 }
 

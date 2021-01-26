@@ -1,28 +1,5 @@
 
 export default class Card {
-  // constructor(
-  //   item,
-  //   cardSelector,
-  //   hendlerImage,
-  //   handlePopupDelete,
-  //   // counterLikes,
-  //   // ID,
-  //   // idCard,
-  //   handleLike) {
-  //     this._name = item.name;
-  //     this._link = item.link;
-  //     this._selector = cardSelector;
-  //     this._hendlerImage = hendlerImage
-  //     this._handlePopupDelete = handlePopupDelete;
-  //     this._handleLike = handleLike;
-  //     // console.log('Наш айтем', item)
-
-  //     this._item = item;
-  //     this._likes = item.likes;
-  //     this._ID = item.owner._id;
-  //     this._idCard = item._id;
-  // }
-
   constructor(
     card,
     user,
@@ -36,12 +13,10 @@ export default class Card {
       this._hendlerImage = hendlerImage
       this._handlePopupDelete = handlePopupDelete;
       this._handleLike = handleLike;
-      // console.log('Наш айтем', item)      
       this._likes = card.likes;
       this._idUserCard = card.owner._id;
       this._idCard = card._id;
       this._idUser = user._id;
-      console.log('HELLO')
   }
 
   _getTemplate () {
@@ -63,7 +38,8 @@ export default class Card {
       // console.log('ЭТО МОЯ КАРТОЧКА')
       image.insertAdjacentHTML('beforebegin', '<button class="card__btn-remove"></button>');
       this.cardItem.querySelector('.card__btn-remove').addEventListener('click', (evt) => {
-        this._handlePopupDelete(evt.target.closest('.card'), this._idCard);
+        console.log('setdeleteButton')
+        // this._handlePopupDelete(evt.target.closest('.card'), this._idCard);
       })
     }
     counter.textContent = this._likes.length

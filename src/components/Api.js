@@ -18,7 +18,7 @@ export default class Api {
         }
 
         return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      }).catch(error => window.alert(`${error}`));
   }
 
   getInitialUser() {
@@ -33,7 +33,7 @@ export default class Api {
         }
 
         return Promise.reject(`Ошибка: ${res.status}`)
-      })
+      }).catch(error => window.alert(`${error}`));
   }
 
   editProfile(name, status) {
@@ -54,7 +54,7 @@ export default class Api {
         }
 
         return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      }).catch(error => window.alert(`${error}`));
   }
 
   addCard(name, link) {
@@ -74,7 +74,7 @@ export default class Api {
           return res.json();
         }
         return Promise.reject(`Ошибка: ${res.status}`)
-      })
+      }).catch(error => window.alert(`${error}`));
   }
 
   deleteCard(cardId) {
@@ -89,7 +89,7 @@ export default class Api {
           return res.json();
         }
         return Promise.reject(`Ошибка: ${res.status}`)
-      })
+      }).catch(error => window.alert(`${error}`));
   }
 
   like(cardId) {
@@ -104,7 +104,7 @@ export default class Api {
           return res.json();
         }
         return Promise.reject(`Ошибка: ${res.status}`)
-      })
+      }).catch(error => window.alert(`${error}`));
   }
   removeLike(cardId) {
     return fetch(`${this._urlApi}${this._groupId}/cards/likes/${cardId}`, {
@@ -118,7 +118,7 @@ export default class Api {
           return res.json();
         }
         return Promise.reject(`Ошибка: ${res.status}`)
-      })
+      }).catch(error => window.alert(`${error}`));
   }
 
   editAvatar(linkAvatar) {
@@ -137,7 +137,7 @@ export default class Api {
           return res.json();
         }
         return Promise.reject(`Ошибка: ${res.status}`)
-      })
+      }).catch(error => window.alert(`${error}`));
   }
 }
 

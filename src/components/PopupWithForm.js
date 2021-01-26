@@ -14,6 +14,7 @@ export default class PopupWithForm extends Popup{
   }
 
   _toWrappingUp () {
+    console.log('ВОТ ТУТ САБМИТ')
     this.submit(this._getInputValues());
     this.close()
   }
@@ -29,10 +30,8 @@ export default class PopupWithForm extends Popup{
 
   close () {
     if(!Object.keys(this._getInputValues()).length == 0) {
-      // console.log('тут что то есть', Object.keys(this._getInputValues()))
       this._popup.querySelector('.popup__form').reset();
     } else {
-      // console.log('тут пусто ', Object.keys(this._getInputValues()))
       this._popup.querySelector('.popup__form'); //.reset()
     }
     super.close()
