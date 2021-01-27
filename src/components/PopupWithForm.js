@@ -30,8 +30,6 @@ export default class PopupWithForm extends Popup{
   close () {
     if(!Object.keys(this._getInputValues()).length == 0) {
       this._popup.querySelector('.popup__form').reset();
-    } else {
-      this._popup.querySelector('.popup__form'); //.reset()
     }
     super.close()
   }

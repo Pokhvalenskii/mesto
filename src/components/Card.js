@@ -6,12 +6,14 @@ export default class Card {
     cardSelector,
     hendlerImage,
     handlePopupDelete,
-    handleLike) {
+    handleLike,
+    ) {
       this._name = card.name;
       this._link = card.link;
       this._selector = cardSelector;
       this._hendlerImage = hendlerImage
       this._handlePopupDelete = handlePopupDelete;
+      // this._handlePopupOpen = handlePopupOpen;
       this._handleLike = handleLike;
       this._likes = card.likes;
       this._idUserCard = card.owner._id;
@@ -38,9 +40,9 @@ export default class Card {
       // console.log('ЭТО МОЯ КАРТОЧКА')
       image.insertAdjacentHTML('beforebegin', '<button class="card__btn-remove"></button>');
       this.cardItem.querySelector('.card__btn-remove').addEventListener('click', (evt) => {
-        // console.log('setdeleteButton')
         this._handlePopupDelete(evt.target.closest('.card'), this._idCard);
       })
+
     }
     counter.textContent = this._likes.length
     // console.log('likesID',  this._likes);
@@ -65,10 +67,7 @@ export default class Card {
   _setEventListeners (likeSelector, image, counter) {
     likeSelector.addEventListener('click', (event) => {
       event.target.classList.toggle('card__btn-like_active');
-      // console.log(event.target)
       this._handleLike(event.target, this._idCard, counter)
-      // this._handleLike(event.target, this._ID, counter)
-
     });
 
     image.addEventListener('click', () => {
