@@ -15,7 +15,6 @@
 4. API
 5. Webpack
 6. BEM
-7. 
 ## Как развернуть проект?
 
 - Скопировать репозиторий: https://github.com/Pokhvalenskii/mesto
